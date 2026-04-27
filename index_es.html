@@ -1,0 +1,1163 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Itinerario de viaje a China (2026)</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&amp;family=DM+Mono:wght@400;500&amp;family=Sora:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<style>
+        :root {
+            --ink: #1a1410;
+            --ink-soft: #3d342a;
+            --muted: #7a6e65;
+            --surface: #fffdf9;
+            --surface-soft: #f9f5ef;
+            --surface-warm: #f3ece0;
+            --border: #e2d8cc;
+            --border-soft: #ede6da;
+            --red: #c0392b;
+            --red-soft: #fae9e7;
+            --gold: #b5860d;
+            --gold-soft: #fef6e0;
+            --teal: #1a6e6a;
+            --teal-soft: #e0f0ef;
+            --shadow: 0 4px 24px rgba(26, 20, 16, 0.08);
+            --shadow-lg: 0 8px 40px rgba(26, 20, 16, 0.13);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Sora', sans-serif;
+            font-size: 15px;
+            line-height: 1.6;
+            color: var(--ink);
+            background:
+                radial-gradient(ellipse at 0% 0%, #f5ede0 0%, transparent 55%),
+                radial-gradient(ellipse at 100% 100%, #e8f0ef 0%, transparent 50%),
+                #faf6f0;
+            min-height: 100vh;
+        }
+
+        .page { max-width: 1280px; margin: 0 auto; padding: 32px 20px 60px; }
+
+        .notranslate { unicode-bidi: isolate; }
+
+        .lang-switch-wrap {
+            display: flex;
+            justify-content: flex-end;
+            margin-bottom: 12px;
+        }
+
+        .lang-switch {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(255, 255, 255, 0.88);
+            border: 1px solid var(--border);
+            border-radius: 999px;
+            padding: 6px;
+            box-shadow: var(--shadow);
+            backdrop-filter: blur(8px);
+        }
+
+        .lang-btn {
+            border: none;
+            background: transparent;
+            color: var(--ink-soft);
+            font-family: 'DM Mono', monospace;
+            font-size: 0.72rem;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            padding: 6px 10px;
+            border-radius: 999px;
+            cursor: pointer;
+            transition: background 0.2s ease, color 0.2s ease;
+        }
+
+        .lang-btn:hover {
+            background: var(--surface-soft);
+            color: var(--ink);
+        }
+
+        .lang-btn.is-active {
+            background: var(--ink);
+            color: #f5ede0;
+        }
+
+        .lang-helper {
+            font-size: 0.72rem;
+            color: var(--muted);
+            margin-right: 8px;
+            align-self: center;
+        }
+
+        /* ── HERO ─────────────────────────────────── */
+        .hero {
+            position: relative;
+            overflow: hidden;
+            background: var(--ink);
+            border-radius: 20px;
+            padding: 36px 40px;
+            margin-bottom: 24px;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .hero::before {
+            content: '中国';
+            position: absolute;
+            right: -10px;
+            top: -30px;
+            font-family: 'Crimson Pro', serif;
+            font-size: 200px;
+            color: rgba(255,255,255,0.04);
+            line-height: 1;
+            pointer-events: none;
+        }
+
+        .hero-eyebrow {
+            display: inline-block;
+            font-family: 'DM Mono', monospace;
+            font-size: 0.72rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: #b89a6a;
+            margin-bottom: 10px;
+        }
+
+        .hero-title {
+            font-family: 'Crimson Pro', serif;
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 300;
+            color: #f5ede0;
+            letter-spacing: 0.01em;
+            line-height: 1.2;
+        }
+
+        .hero-title em {
+            font-style: italic;
+            color: #d4a96a;
+        }
+
+        .hero-subtitle {
+            margin-top: 6px;
+            color: #9e8c78;
+            font-size: 0.92rem;
+        }
+
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+            margin-top: 24px;
+        }
+
+        .stat {
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 12px;
+            padding: 14px 16px;
+        }
+
+        .stat-label {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.67rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #7a6a58;
+        }
+
+        .stat-value {
+            margin-top: 4px;
+            font-size: 1rem;
+            font-weight: 600;
+            color: #f0e4d0;
+        }
+
+        /* ── TOP GRID ─────────────────────────────── */
+        .top-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+
+        /* ── PANELS ───────────────────────────────── */
+        .panel {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 22px 24px;
+            box-shadow: var(--shadow);
+        }
+
+        .panel-title {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--muted);
+            margin-bottom: 14px;
+        }
+
+        /* ── FLIGHTS ──────────────────────────────── */
+        .flight-card {
+            border: 1px solid var(--border-soft);
+            border-radius: 12px;
+            padding: 14px 16px;
+            background: var(--surface-soft);
+        }
+
+        .flight-card + .flight-card { margin-top: 10px; }
+
+        .flight-badge {
+            display: inline-block;
+            font-family: 'DM Mono', monospace;
+            font-size: 0.65rem;
+            font-weight: 500;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            padding: 3px 9px;
+            border-radius: 99px;
+        }
+
+        .badge-in { background: var(--teal-soft); color: var(--teal); }
+        .badge-out { background: var(--gold-soft); color: var(--gold); }
+
+        .flight-route {
+            font-weight: 600;
+            font-size: 1rem;
+            margin: 6px 0 2px;
+        }
+
+        .flight-detail {
+            font-size: 0.85rem;
+            color: var(--muted);
+            line-height: 1.5;
+        }
+
+        .flight-leg {
+            font-size: 0.83rem;
+            color: var(--ink-soft);
+            margin-top: 8px;
+            padding-top: 8px;
+            border-top: 1px solid var(--border-soft);
+        }
+
+        /* ── HOTELS ───────────────────────────────── */
+        .hotel-list { list-style: none; display: grid; gap: 8px; }
+
+        .hotel-list li {
+            font-size: 0.87rem;
+            line-height: 1.5;
+            padding: 11px 14px;
+            border: 1px solid var(--border-soft);
+            border-radius: 10px;
+            background: #fff;
+            color: var(--ink-soft);
+        }
+
+        .hotel-list strong { color: var(--ink); display: block; margin-bottom: 2px; }
+
+        .hotel-list a {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.72rem;
+            color: var(--teal);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .hotel-list a:hover { text-decoration: underline; }
+
+        /* ── COSTS ────────────────────────────────── */
+        .cost-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            padding: 9px 0;
+            border-bottom: 1px solid var(--border-soft);
+            font-size: 0.9rem;
+            gap: 12px;
+        }
+
+        .cost-row:last-child { border-bottom: none; }
+
+        .cost-label { color: var(--ink-soft); flex: 1; }
+
+        .cost-amount {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.88rem;
+            color: var(--gold);
+            white-space: nowrap;
+        }
+
+        .cost-total .cost-label,
+        .cost-total .cost-amount {
+            font-weight: 700;
+            color: var(--ink);
+            font-size: 1rem;
+        }
+
+        .cost-excluded { color: var(--muted); font-style: italic; }
+
+        /* ── NOTES ────────────────────────────────── */
+        .notes-panel {
+            background: var(--gold-soft);
+            border-color: #e8c87a;
+        }
+
+        .notes-list { padding-left: 1.2rem; }
+
+        .notes-list li {
+            color: var(--ink-soft);
+            font-size: 0.9rem;
+            margin-bottom: 8px;
+            line-height: 1.55;
+        }
+
+        /* ── GOLDEN WEEK WARNING ──────────────────── */
+        .warning-panel {
+            background: #fff5f5;
+            border: 1px solid #f5b8b0;
+            border-radius: 14px;
+            padding: 16px 20px;
+            margin-bottom: 16px;
+            display: flex;
+            gap: 14px;
+            align-items: flex-start;
+        }
+
+        .warning-icon { font-size: 1.4rem; flex-shrink: 0; margin-top: 2px; }
+
+        .warning-text { font-size: 0.88rem; line-height: 1.55; color: #7a2020; }
+
+        .warning-text strong { display: block; font-size: 0.94rem; margin-bottom: 3px; color: #c0392b; }
+
+        /* ── ITINERARY TABLE ──────────────────────── */
+        .itinerary-wrap {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            margin-bottom: 16px;
+        }
+
+        .itable-head {
+            display: grid;
+            grid-template-columns: 130px 160px 1fr 220px;
+            gap: 0;
+            background: var(--ink);
+            padding: 0;
+        }
+
+        .itable-head > div {
+            padding: 12px 16px;
+            font-family: 'DM Mono', monospace;
+            font-size: 0.67rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #8a7a68;
+        }
+
+        /* Day row */
+        .day-row {
+            display: grid;
+            grid-template-columns: 130px 160px 1fr 220px;
+            gap: 0;
+            border-bottom: 1px solid var(--border-soft);
+            transition: background 0.15s;
+        }
+
+        .day-row:last-child { border-bottom: none; }
+        .day-row:hover { background: #fffaf5; }
+
+        /* City color bands */
+        .day-row.beijing { border-left: 3px solid #c0392b; }
+        .day-row.transit { border-left: 3px solid #7a6e65; }
+        .day-row.shanghai { border-left: 3px solid #1a6e6a; }
+        .day-row.zhangjiajie { border-left: 3px solid #2980b9; }
+        .day-row.Guilin { border-left: 3px solid #8e44ad; }
+        .day-row.yangshuo { border-left: 3px solid #16a085; }
+        .day-row.shenzhen { border-left: 3px solid #e67e22; }
+        .day-row.macau { border-left: 3px solid #c0392b; }
+        .day-row.zhongshan { border-left: 3px solid #27ae60; }
+        .day-row.guangzhou { border-left: 3px solid #7f8c8d; }
+
+        .day-row > div {
+            padding: 14px 16px;
+            font-size: 0.88rem;
+            line-height: 1.5;
+        }
+
+        .day-id {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        .day-num { font-size: 1.05rem; font-weight: 700; color: var(--ink); }
+        .day-date { color: var(--muted); font-size: 0.8rem; }
+
+        .day-loc {
+            font-weight: 600;
+            color: var(--ink);
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+        }
+
+        .day-loc small {
+            font-weight: 400;
+            font-size: 0.78rem;
+            color: var(--muted);
+        }
+
+        /* Plan cell */
+        .day-plan {}
+
+        .plan-headline {
+            font-weight: 600;
+            color: var(--ink);
+            margin-bottom: 4px;
+        }
+
+        .plan-desc { color: var(--ink-soft); font-size: 0.86rem; }
+
+        /* Time blocks */
+        .time-blocks { margin-top: 10px; display: grid; gap: 5px; }
+
+        .tb {
+            display: flex;
+            gap: 8px;
+            font-size: 0.83rem;
+            align-items: flex-start;
+        }
+
+        .tb-time {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.72rem;
+            color: var(--muted);
+            white-space: nowrap;
+            padding-top: 2px;
+            min-width: 48px;
+        }
+
+        .tb-content { color: var(--ink-soft); flex: 1; }
+
+        .tb-content strong { color: var(--ink); font-weight: 600; }
+
+        /* Tips */
+        .tips {
+            margin-top: 10px;
+            padding: 9px 12px;
+            background: var(--teal-soft);
+            border-radius: 8px;
+            font-size: 0.8rem;
+            color: #1a4a48;
+            line-height: 1.5;
+        }
+
+        .tips::before { content: '💡 '; }
+
+        .warn-tip {
+            background: var(--red-soft);
+            color: #7a2020;
+        }
+
+        .warn-tip::before { content: '⚠️ '; }
+
+        /* Stay cell */
+        .day-stay {
+            border-left: 1px solid var(--border-soft);
+            font-size: 0.84rem;
+            color: var(--ink-soft);
+        }
+
+        .stay-name { font-weight: 600; color: var(--ink); margin-bottom: 3px; }
+        .stay-price { color: var(--gold); font-family: 'DM Mono', monospace; font-size: 0.8rem; }
+        .stay-link a { font-family: 'DM Mono', monospace; font-size: 0.7rem; color: var(--teal); text-decoration: none; }
+        .stay-link a:hover { text-decoration: underline; }
+
+        /* ── LEGEND ───────────────────────────────── */
+        .legend {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 16px;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.78rem;
+            color: var(--muted);
+        }
+
+        .legend-dot {
+            width: 10px; height: 10px;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        /* ── FOOTNOTE ─────────────────────────────── */
+        .footnote {
+            font-size: 0.82rem;
+            color: var(--muted);
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        @media (max-width: 900px) {
+            .hero-stats { grid-template-columns: repeat(2, 1fr); }
+            .top-grid { grid-template-columns: 1fr; }
+
+            .itable-head { display: none; }
+
+            .day-row {
+                display: block;
+                padding: 14px 16px;
+                position: relative;
+            }
+
+            .day-row > div { padding: 4px 0; border: none; }
+            .day-stay { border: none; margin-top: 8px; padding-top: 8px; border-top: 1px solid var(--border-soft); }
+        }
+
+        @media (max-width: 600px) {
+            .hero { padding: 24px 20px; }
+            .hero::before { display: none; }
+
+            .lang-switch-wrap {
+                justify-content: center;
+            }
+
+            .lang-helper {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+<div aria-label="Language switcher" class="lang-switch-wrap notranslate">
+<span class="lang-helper" id="lang-helper">Idioma:</span>
+<div aria-label="Switch language" class="lang-switch" role="group">
+<button class="lang-btn" data-lang="en" id="lang-en" type="button">EN</button>
+<button class="lang-btn" data-lang="zh-CN" id="lang-zh" type="button">中文</button>
+<button class="lang-btn is-active" data-lang="es" id="lang-es" type="button">ES</button>
+</div>
+</div>
+<!-- HERO -->
+<header class="hero">
+<span class="hero-eyebrow">21 Días · 22 de septiembre – 12 de octubre de 2026</span>
+<h1 class="hero-title">Un viaje por <em>China</em></h1>
+<p class="hero-subtitle">Pekín · Shanghái · Zhangjiajie · Guilin · Yangshuo · Shenzhen · Macao · Zhongshan</p>
+<div class="hero-stats">
+<div class="stat">
+<div class="stat-label">Duración</div>
+<div class="stat-value">21 días</div>
+</div>
+<div class="stat">
+<div class="stat-label">Ciudades</div>
+<div class="stat-value">8 paradas</div>
+</div>
+<div class="stat">
+<div class="stat-label">Total conocido</div>
+<div class="stat-value">~2.015 euros</div>
+</div>
+<div class="stat">
+<div class="stat-label">Por persona / día</div>
+<div class="stat-value">~96 euros</div>
+</div>
+</div>
+</header>
+<!-- GOLDEN WEEK WARNING -->
+<div class="warning-panel">
+<div class="warning-icon">🗓️</div>
+<div class="warning-text">
+<strong>Alerta de la Semana Dorada: del 1 al 8 de octubre se superpone con sus días en Zhangjiajie, Guilin y Yangshuo</strong>
+            La Semana Dorada (el feriado del Día Nacional de China) es la semana de viajes más ocupada del país con cientos de millones de viajeros nacionales. Zhangjiajie, Guilin y Yangshuo son puntos de gran afluencia de público. Reserve boletos de tren, teleféricos y el crucero por el río Li lo antes posible, idealmente con 30 a 60 días de anticipación. Siempre que sea posible, reserve con antelación los espacios de entrada programados para evitar hacer largas colas ese día.
+        </div>
+</div>
+<!-- TOP GRID: Flights + Hotels -->
+<div class="top-grid">
+<article class="panel">
+<div class="panel-title">Vuelos internacionales</div>
+<div class="flight-card">
+<span class="flight-badge badge-in">Llegada</span>
+<div class="flight-route">FRA → HAN → PEK  ·  Vietnam Airlines, clase económica</div>
+<div class="flight-detail">mar 22 sep 13:55 (FRA) → miércoles 23 sep 14:45 (PEK)  ·  18h 50m total</div>
+<div class="flight-leg">
+                    VN36: FRA 13:55 → HAN 06:05 (11h 10m) · 4h traslado en Hanoi · VN512: HAN 10:05 → PEK 14:45 (3h 40m)<br/>
+                    Equipaje: 1 artículo personal + 1 maleta de cabina + 1 maleta facturada incluida
+                </div>
+</div>
+<div class="flight-card">
+<span class="flight-badge badge-out">Regreso</span>
+<div class="flight-route">CAN → ALA → FRA  ·  Air Astana, Turista</div>
+<div class="flight-detail">lun 12 oct 06:50 (CAN) → lun 12 oct 17:00 (FRA)  ·  16h 10m en total</div>
+<div class="flight-leg">
+                    KC188: CAN 06:50 → ALA 10:25 (6h 35m) · 1h 20m traslado en Almaty · KC221: ALA 11:45 → FRA 17:00 (8h 15m)<br/>
+                    Equipaje: 1 cabina (máximo 8 kg) + 1 maleta facturada (máximo 23 kg)
+                </div>
+</div>
+</article>
+<article class="panel">
+<div class="panel-title">Resumen de alojamiento</div>
+<ul class="hotel-list">
+<li><strong>Pekín · 3 noches @ 32 EUR</strong>Hotel City Comfort Inn · Zona de la estación de metro Yonghegong, Chaoyang<br/><a href="https://www.trip.com/hotels/beijing-hotel-detail-133072640/city-comfort-inn-hotel/" rel="noopener" target="_blank">→ Ver hotel</a></li>
+<li><strong>Shanghái · 3 noches @ 36 EUR</strong>Jinglai Light Luxury Hotel · Estación de metro Wuning Road, distrito de Putuo<br/><a href="https://www.trip.com/hotels/Shanghai-hotel-detail-36187099/" rel="noopener" target="_blank">→ Ver hotel</a></li>
+<li><strong>Zhangjiajie · 3 noches a 19 EUR</strong>Beian Qingshe Holiday Inn · Sucursal del parque forestal Wulingyuan<br/><a href="https://www.trip.com/hotels/detail/?cityId=27&amp;hotelId=22942205" rel="noopener" target="_blank">→ Ver hotel</a></li>
+<li><strong>Guilin · 2 noches a 57 EUR</strong>Hotel City Comfort Inn · Área de Dos Ríos y Cuatro Lagos<br/><a href="https://www.trip.com/hotels/detail/?cityId=33&amp;hotelId=3420145" rel="noopener" target="_blank">→ Ver hotel</a></li>
+<li><strong>Yangshuo · 1 noche @ 37 EUR</strong>Shengjin Hotel · Lao Street, ciudad de Xingping<br/><a href="https://www.trip.com/hotels/detail/?cityId=871&amp;hotelId=11054825" rel="noopener" target="_blank">→ Ver hotel</a></li>
+<li><strong>Shenzhen · 2 noches a 24 EUR</strong>Estancia en el distrito de Nanshan<br/><a href="https://www.trip.com/hotels/detail/?cityId=30&amp;hotelId=104437485" rel="noopener" target="_blank">→ Ver hotel</a></li>
+<li><strong>Macao · 1 noche @ 37 EUR</strong>Pensão Família · Rua das Estalagens, Península de Macao<br/><a href="https://www.trip.com/hotels/detail/?cityId=59&amp;hotelId=114524153" rel="noopener" target="_blank">→ Ver hotel</a></li>
+<li><strong>Zhongshan · 3 noches @ 20 EUR</strong>Vienna Hotel · Calle peatonal plaza Xingzhong<br/><a href="https://www.trip.com/hotels/detail/?cityId=553&amp;hotelId=6758490" rel="noopener" target="_blank">→ Ver hotel</a></li>
+<li><strong>Guangzhou · 1 noche @ 80 EUR</strong>Estancia de 12 horas en el spa del aeropuerto<br/><a href="https://www.trip.com/hotels/guangzhou-hotels-list-32/" rel="noopener" target="_blank">→ Opciones de exploración</a></li>
+</ul>
+</article>
+</div>
+<!-- COSTS + NOTES -->
+<div class="top-grid" style="margin-bottom:16px;">
+<article class="panel">
+<div class="panel-title">Resumen de costos de viaje</div>
+<div class="cost-row"><span class="cost-label">Vuelos internacionales</span><span class="cost-amount">790,63 euros</span></div>
+<div class="cost-row"><span class="cost-label">Alojamiento (todas las noches)</span><span class="cost-amount">637€</span></div>
+<div class="cost-row"><span class="cost-label">Trenes de larga distancia (todos listados)</span><span class="cost-amount">247 euros</span></div>
+<div class="cost-row"><span class="cost-label">Crucero por el río Li · Guilin → Yangshuo</span><span class="cost-amount">25 euros</span></div>
+<div class="cost-row"><span class="cost-label">Comida (15 EUR/persona/día × 21 días)</span><span class="cost-amount">315 euros</span></div>
+<div class="cost-row cost-total"><span class="cost-label">Total conocido</span><span class="cost-amount">2.014,63 euros</span></div>
+<div class="cost-row"><span class="cost-label cost-excluded">Metro local, taxis, ferries, teleféricos y entradas para atracciones</span><span class="cost-amount cost-excluded">no incluido</span></div>
+</article>
+<article class="panel notes-panel">
+<div class="panel-title">Notas y consejos de viaje</div>
+<ul class="notes-list">
+<li>Reserve boletos para la Ciudad Prohibida con hasta 7 días de anticipación; se agotan rápidamente. Utilice el miniprograma oficial de WeChat.</li>
+<li>Trenes dentro de China: reserve con aproximadamente 1 mes de anticipación. Los segmentos de larga distancia también pueden ser reemplazados por vuelos nacionales, a menudo al mismo precio: reserve con 50 días de anticipación para obtener las mejores ofertas.</li>
+<li>Semana Dorada (del 1 al 8 de octubre): reserve con anticipación boletos programados en línea para los teleféricos, el crucero por el río Li y atracciones clave para evitar las colas durante el día, mucho más fácil para todos, especialmente si viene papá.</li>
+<li>Metro en Beijing, Shanghai, Guangzhou, Shenzhen: muy barato, normalmente acepta Mastercard/Visa. En Hong Kong, consigue una tarjeta Octopus (también funciona en tiendas).</li>
+<li>Alipay / WeChat Pay: vincule una tarjeta extranjera antes de la llegada; la mayoría de los pequeños vendedores ya no aceptan efectivo.</li>
+<li>Septiembre en Beijing: comienzan las hojas doradas. Octubre: pico otoñal con cielos claros y nítidos: clima ideal para fotografía.</li>
+<li>Algunas atracciones necesitan entradas separadas: teleféricos, Treasure Gallery (Ciudad Prohibida), Parque Jingshan (10 CNY), pasarela de cristal (Zhangjiajie). Presupuesto entre 20 y 40 EUR adicionales por persona y día para estos.</li>
+</ul>
+</article>
+</div>
+<!-- LEGEND -->
+<div class="legend">
+<span style="font-size:0.78rem;color:var(--muted);margin-right:4px;">Clave de color de la ciudad:</span>
+<span class="legend-item"><span class="legend-dot" style="background:#c0392b;"></span>Pekín</span>
+<span class="legend-item"><span class="legend-dot" style="background:#1a6e6a;"></span>Shanghái</span>
+<span class="legend-item"><span class="legend-dot" style="background:#2980b9;"></span>Zhangjiajie</span>
+<span class="legend-item"><span class="legend-dot" style="background:#8e44ad;"></span>Guilin</span>
+<span class="legend-item"><span class="legend-dot" style="background:#16a085;"></span>Yangshuo</span>
+<span class="legend-item"><span class="legend-dot" style="background:#e67e22;"></span>Shenzhen</span>
+<span class="legend-item"><span class="legend-dot" style="background:#c0392b;opacity:0.6"></span>Macao</span>
+<span class="legend-item"><span class="legend-dot" style="background:#27ae60;"></span>Zhongshan</span>
+</div>
+<!-- MAIN ITINERARY TABLE -->
+<div class="itinerary-wrap">
+<div class="itable-head">
+<div>Día</div>
+<div>Ubicación</div>
+<div>Plan y desglose por horas</div>
+<div>Alojamiento</div>
+</div>
+<!-- DAY 1 -->
+<div class="day-row transit">
+<div class="day-id"><div class="day-num">Día 1</div><div class="day-date">martes, 22 de septiembre</div></div>
+<div class="day-loc">Europa → Pekín<small>Día de salida</small></div>
+<div class="day-plan">
+<div class="plan-headline">✈ Vuelo nocturno — FRA → HAN → PEK</div>
+<div class="time-blocks">
+<div class="tb"><span class="tb-time">13:55</span><div class="tb-content">Salida de Frankfurt (FRA) el <strong>VN36</strong>. Instálese: es un vuelo de 11 horas hasta Hanoi.</div></div>
+<div class="tb"><span class="tb-time">06:05+1</span><div class="tb-content">Llegada a Hanói (HAN). Escala de 4 horas: tome pho o bánh mì en la terminal.</div></div>
+<div class="tb"><span class="tb-time">10:05+1</span><div class="tb-content">Salida de Hanoi el <strong>VN512</strong> a Pekín.</div></div>
+</div>
+<div class="tips">Empaque almohada para el cuello, antifaz y calcetines de compresión. Descargue mapas sin conexión de Beijing antes de la salida. Configure el teléfono en la zona horaria de China (UTC+8).</div>
+</div>
+<div class="day-stay"><div class="stay-name">En vuelo</div></div>
+</div>
+<!-- DAY 2 -->
+<div class="day-row beijing">
+<div class="day-id"><div class="day-num">Día 2</div><div class="day-date">miércoles, 23 de septiembre</div></div>
+<div class="day-loc">Pekín<small>Llegada PEK + instalación</small></div>
+<div class="day-plan">
+<div class="plan-headline">🛬 Llegada a Beijing: primera noche suave</div>
+<div class="time-blocks">
+<div class="tb"><span class="tb-time">14:45</span><div class="tb-content">Desembarcar en <strong>Aeropuerto de Pekín Capital (PEK)</strong>. Tome un taxi directamente al hotel (~¥120–150, ~45 min): más sencillo que el metro con el equipaje después de un largo vuelo, especialmente para papá.</div></div>
+<div class="tb"><span class="tb-time">16:30</span><div class="tb-content">Regístrese en <strong>City Comfort Inn Hotel</strong>. Descansa, refréscate y descomprime. El viaje de 18 horas lo saca a todos.</div></div>
+<div class="tb"><span class="tb-time">18:00</span><div class="tb-content">Paseo corto hasta <strong>Hutong de Nanluoguxiang</strong> (~10 minutos a pie): una calle plana y encantadora con cafeterías, puestos de bocadillos y tiendas de artesanía. Muy tranquilo. Encuentre un restaurante en el patio y siéntese a disfrutar de una cena propia de Beijing: fideos zhajiang, albóndigas o un menú fijo. No es necesario caminar mucho.</div></div>
+<div class="tb"><span class="tb-time">20:30</span><div class="tb-content">Temprano en la noche: después de casi 24 horas de viaje, todos necesitan dormir. Reserve entradas para la Ciudad Prohibida en línea antes de acostarse.</div></div>
+</div>
+<div class="tips">Tome un taxi al llegar en lugar del metro; es mucho más fácil con maletas y un grupo cansado. Nanluoguxiang es plano, animado y muy cerca del hotel. Mañana es un gran día, así que el descanso es la prioridad esta noche. No olvides: <strong>Reserve entradas para la Ciudad Prohibida en línea esta noche</strong> — Palace.com.cn (7 días antes, se agota rápidamente).</div>
+</div>
+<div class="day-stay">
+<div class="stay-name">City Comfort Inn Hotel</div>
+<div class="stay-price">32 euros / habitación</div>
+<div class="stay-link"><a href="https://www.trip.com/hotels/beijing-hotel-detail-133072640/" rel="noopener" target="_blank">→ Ver hotel</a></div>
+</div>
+</div>
+<!-- DAY 3 -->
+<div class="day-row beijing">
+<div class="day-id"><div class="day-num">Día 3</div><div class="day-date">Jueves, 24 de septiembre</div></div>
+<div class="day-loc">Pekín<small>Centro imperial</small></div>
+<div class="day-plan">
+<div class="plan-headline">🏯 Ciudad Prohibida · Tiananmen · Jingshan · Qianmen Tarde</div>
+<div class="time-blocks">
+<div class="tb"><span class="tb-time">08:30</span><div class="tb-content">Desayuno relajado en el hotel, luego taxi a <strong>Plaza de Tiananmén</strong> (~¥30). La plaza pública más grande del mundo: camine a su propio ritmo y tome fotografías de la Puerta de la Paz Celestial. Completamente llano, sin colas.</div></div>
+<div class="tb"><span class="tb-time">09:15</span><div class="tb-content">Ingresar <strong>ciudad prohibida</strong> a través de Meridian Gate (boletos reservados con anticipación). Compra una audioguía (~40 CNY): significa que papá puede sentarse en un banco y escuchar en lugar de caminar constantemente. Siga el eje central a un ritmo pausado: Salón de la Armonía Suprema → Palacio de la Pureza Celestial → Jardín Imperial. Si los pies se cansan, busque uno de los muchos bancos de piedra y siéntese; vale la pena estudiar la arquitectura lentamente.</div></div>
+<div class="tb"><span class="tb-time">12:00</span><div class="tb-content"><strong>Descanso del mediodía</strong> — almorzar en la cafetería de la Ciudad Prohibida cerca del Jardín Imperial (sorprendentemente bueno) o salir y buscar un restaurante cercano. Tómate una hora completa para sentarte y recuperarte antes de la tarde.</div></div>
+<div class="tb"><span class="tb-time">13:30</span><div class="tb-content">Sal al norte y entra. <strong>Parque Jingshan</strong> (10 yuanes). La subida al Pabellón Wanchun es de aproximadamente 200 escalones; tómelo lentamente con paradas para descansar o disfrute de los jardines del parque en la base si la subida no es cómoda. La vista desde lo alto de la Ciudad Prohibida es la mejor de Beijing, pero el parque en sí también es hermoso a nivel del suelo.</div></div>
+<div class="tb"><span class="tb-time">15:00</span><div class="tb-content"><strong>pausa para el té</strong> — busque una casa de té cerca del parque o en el área de Nanluoguxiang. Siéntese durante 30 a 45 minutos. Esto no es opcional: los pies necesitan descansar antes de la noche.</div></div>
+<div class="tb"><span class="tb-time">16:30</span><div class="tb-content">Corto trayecto en taxi hasta <strong>Calle Qianmen</strong> – un bulevar comercial tradicional bellamente restaurado justo al sur de Tiananmen. Plano, peatonal, fácil de recorrer a cualquier ritmo. Restaurantes de pato asado, tiendas de snacks tradicionales y escaparates de estilo antiguo.</div></div>
+<div class="tb"><span class="tb-time">18:30</span><div class="tb-content">Cena en un <strong>Restaurante pato pekinés</strong> en o cerca de Qianmen: esta es la comida esencial de Beijing. Siéntate, pide un pato entero y disfrútalo como es debido. Da Dong o Quanjude son los nombres famosos cercanos.</div></div>
+</div>
+<div class="tips">La Ciudad Prohibida tiene muchos bancos a lo largo de la ruta; úsalos libremente. La audioguía significa que papá puede absorber la historia sin necesidad de seguir caminando. Omita las galerías internas (Galería del Tesoro, Galería del Reloj) si tiene poca energía: el eje principal por sí solo es extraordinario. Guarde el Templo del Cielo para otra ciudad si el tiempo lo permite; No intentes hacer ambas cosas en un día.</div>
+</div>
+<div class="day-stay">
+<div class="stay-name">City Comfort Inn Hotel</div>
+<div class="stay-price">32 euros / habitación</div>
+</div>
+</div>
+<!-- DAY 4 -->
+<div class="day-row beijing">
+<div class="day-id"><div class="day-num">Día 4</div><div class="day-date">viernes, 25 de septiembre</div></div>
+<div class="day-loc">Pekín<small>Gran Muralla + Palacio de Verano</small></div>
+<div class="day-plan">
+<div class="plan-headline">🏔 Gran Muralla Mutianyu · Tarde junto al lago en el Palacio de Verano</div>
+<div class="time-blocks">
+<div class="tb"><span class="tb-time">08:30</span><div class="tb-content">Después de un buen desayuno, salida hacia <strong>Gran Muralla Mutianyu</strong>. Reserve un automóvil privado a través del hotel (entre 200 y 300 CNY ida y vuelta): mucho más cómodo que el minibús público, con servicio de recogida puerta a puerta. ~1,5 h por trayecto.</div></div>
+<div class="tb"><span class="tb-time">10:15</span><div class="tb-content">Llegada a Mutianyu. <strong>Sube en teleférico</strong> (~100 CNY, 5 min): no hay que subir. Camine un tramo cómodo de la pared de este a oeste al ritmo que le convenga a papá. Las vistas de los valles boscosos y las torres de vigilancia en ambas direcciones son impresionantes. Descanse en las almenas de la pared cuando sea necesario.</div></div>
+<div class="tb"><span class="tb-time">12:00</span><div class="tb-content">Almuerzo al pie de la muralla: varios restaurantes sirven comida sencilla y abundante. Siéntate y descansa adecuadamente durante una hora.</div></div>
+<div class="tb"><span class="tb-time">13:30</span><div class="tb-content"><strong>Bajada en trineo</strong> (~100 CNY, opcional pero muy divertido para todas las edades): un trineo de metal que se desliza desde la pared hasta la base. Alternativa aprobada por papá a bajar escaleras empinadas.</div></div>
+<div class="tb"><span class="tb-time">14:30</span><div class="tb-content">Regreso a Pekín. Dirígete a <strong>Palacio de Verano</strong> para una tarde tranquila junto al lago: no es necesario escalar. Pasee por el paseo llano <strong>Lago Kunmíng</strong>, admire el Corredor Largo (una pasarela cubierta de 728 m con escenas pintadas) y disfrute de la luz otoñal en el agua. Se ofrecen paseos en rickshaw si los pies están cansados.</div></div>
+<div class="tb"><span class="tb-time">17:00</span><div class="tb-content">Té en un pabellón junto al lago. Luego tome un taxi de regreso al hotel para refrescarse antes de la cena.</div></div>
+<div class="tb"><span class="tb-time">19:00</span><div class="tb-content">Cena relajada cerca del hotel: la zona del lago Houhai tiene docenas de buenos restaurantes con terrazas al aire libre y música en vivo.</div></div>
+</div>
+<div class="tips">El teleférico y el tobogán de Mutianyu significan que papá tendrá la experiencia completa de la Gran Muralla sin tener que subir escaleras. El Palacio de Verano es ideal para viajeros mayores: es uno de los jardines más bellos de China y completamente plano alrededor del lago. Se pueden alquilar rickshaws dentro del recinto.</div>
+</div>
+<div class="day-stay">
+<div class="stay-name">City Comfort Inn Hotel</div>
+<div class="stay-price">32 euros / habitación</div>
+</div>
+</div>
+<!-- DAY 5 -->
+<div class="day-row transit">
+<div class="day-id"><div class="day-num">Día 5</div><div class="day-date">sábado, 26 de septiembre</div></div>
+<div class="day-loc">Pekín → Shanghái<small>Tren bala G741</small></div>
+<div class="day-plan">
+<div class="plan-headline">🚄 Exploración matutina · Tren bala a Shanghai</div>
+<div class="plan-desc">El tren sale a las 11:50. ¡Aproveche la mañana para disfrutar por última vez de Beijing!</div>
+<div class="time-blocks">
+<div class="tb"><span class="tb-time">08:00</span><div class="tb-content">Verificar. Dirígete a <strong>Mansión del Príncipe Gong</strong> (cerca): la residencia del príncipe de la dinastía Qing mejor conservada con un hermoso jardín de feng shui. ~40 CNY, tarda ~1,5 h.</div></div>
+<div class="tb"><span class="tb-time">09:30</span><div class="tb-content">Alternativamente: explorar <strong>798 Distrito de Arte</strong> (arte contemporáneo en una fábrica reutilizada) o vuelva a visitar el área de Nanluoguxiang para disfrutar de un desayuno tranquilo.</div></div>
+<div class="tb"><span class="tb-time">10:30</span><div class="tb-content">Dirígete a <strong>Estación Beijing Nan (Sur)</strong>. Espere 45 min + llegue 30 min antes de la salida.</div></div>
+<div class="tb"><span class="tb-time">11:50</span><div class="tb-content">Salida el <strong>G741</strong> — 2.ª clase, 76 EUR. La línea de alta velocidad atraviesa las llanuras del norte. Relájate, merienda, disfruta.</div></div>
+<div class="tb"><span class="tb-time">18:02</span><div class="tb-content">Llegar <strong>Shanghái Hongqiao</strong>. Línea 2 o 10 del metro hasta el hotel en el distrito de Putuo (~40 min).</div></div>
+<div class="tb"><span class="tb-time">19:30</span><div class="tb-content">Paseo nocturno <strong>El Bund</strong> — el paseo marítimo colonial frente al horizonte de Pudong. Espectacular iluminado de noche. Tome el ferry (¡2 yenes!) hasta Pudong para disfrutar de un ángulo diferente.</div></div>
+</div>
+<div class="tips">El Bund está mejor al anochecer, cuando los rascacielos se iluminan. Tome una cerveza junto al río y sumérjase en el contraste de la arquitectura europea de los años 20 frente a las torres del siglo XXI.</div>
+</div>
+<div class="day-stay">
+<div class="stay-name">Jinglai Light Luxury Hotel</div>
+<div class="stay-price">36 euros / habitación</div>
+<div class="stay-link"><a href="https://www.trip.com/hotels/Shanghai-hotel-detail-36187099/" rel="noopener" target="_blank">→ Ver hotel</a></div>
+</div>
+</div>
+<!-- DAY 6 -->
+<div class="day-row shanghai">
+<div class="day-id"><div class="day-num">Día 6</div><div class="day-date">domingo, 27 de septiembre</div></div>
+<div class="day-loc">Shanghái<small>Pudong + Ciudad Vieja</small></div>
+<div class="day-plan">
+<div class="plan-headline">🌆 Horizonte de Pudong · Jardín Yu · El Bund</div>
+<div class="time-blocks">
+<div class="tb"><span class="tb-time">08:30</span><div class="tb-content">Tome el metro hasta <strong>Lujiazui (Pudong)</strong>. Mire hacia arriba desde el nivel del suelo: la Torre de Shanghai (632 m), Jin Mao y la Torre de la Perla Oriental se agrupan aquí. Dirigir <strong>Plataforma de observación de la Torre de Shanghai</strong> (piso 118, ¥180) para disfrutar de la vista más alta de China. Vaya temprano para evitar las nubes y las colas.</div></div>
+<div class="tb"><span class="tb-time">11:00</span><div class="tb-content">Cruzar de regreso a Puxi por la <strong>Túnel turístico del Bund</strong> (55 yenes, espectáculo de luces peculiar) o el ferry gratuito.</div></div>
+<div class="tb"><span class="tb-time">12:00</span><div class="tb-content"><strong>Jardín Yu (Yuyuan)</strong> — Jardín clásico de la dinastía Ming con rocallas, estanques y pabellones. Lleno de gente pero hermoso. ~¥40. Pasea por los alrededores <strong>Bazar de la ciudad vieja</strong> carriles para albóndigas de sopa xiaolongbao en el restaurante Nanxiang Steamed Bun (lugar emblemático, espere colas).</div></div>
+<div class="tb"><span class="tb-time">14:30</span><div class="tb-content">Camine hacia el norte por <strong>El paseo del Bund</strong> — vea el arco completo de los edificios coloniales. Mire el interior de los ornamentados vestíbulos del Fairmont Peace Hotel y del edificio HSBC (ahora un banco, entrada gratuita al vestíbulo).</div></div>
+<div class="tb"><span class="tb-time">16:00</span><div class="tb-content">Explorar <strong>Carretera Nanjing</strong> (sección peatonal): la calle comercial más famosa de China. Animado y animado. Dirígete hacia el este hacia la Plaza del Pueblo.</div></div>
+<div class="tb"><span class="tb-time">18:30</span><div class="tb-content"><strong>Museo de Shangai</strong> en People's Square (gratis, cierra ~17:00; consulte con anticipación) o en un bar de cócteles en la azotea en el lado del Bund para ver el atardecer.</div></div>
+<div class="tb"><span class="tb-time">20:00</span><div class="tb-content">Nuevamente la vista nocturna desde el Bund: mágica con las torres de Pudong iluminadas. Pruebe un <strong>Crucero nocturno por el río Huangpu</strong> (¥120, 50 min) para disfrutar de vistas de la ciudad desde el agua.</div></div>
+</div>
+<div class="tips">La plataforma de observación de la Torre de Shanghai merece la pena por la vista y el suelo de cristal (un poco aterrador). Compra entradas online para saltarte las colas. Es mejor visitarlo en una mañana despejada antes de la bruma de la tarde.</div>
+</div>
+<div class="day-stay">
+<div class="stay-name">Jinglai Light Luxury Hotel</div>
+<div class="stay-price">36 euros / habitación</div>
+</div>
+</div>
+<!-- DAY 7 -->
+<div class="day-row shanghai">
+<div class="day-id"><div class="day-num">Día 7</div><div class="day-date">lunes, 28 de septiembre</div></div>
+<div class="day-loc">Shanghái<small>Concesión francesa</small></div>
+<div class="day-plan">
+<div class="plan-headline">🌳 Día de caminata por las concesiones francesas · Tianzifang · Xintiandi</div>
+<div class="time-blocks">
+<div class="tb"><span class="tb-time">08:30</span><div class="tb-content">Empezar en <strong>Parque Fuxing</strong> – un jardín de estilo francés donde los lugareños practican tai chi, bailes de salón y juegos de cartas todas las mañanas. Se siente como entrar en el viejo Shanghai.</div></div>
+<div class="tb"><span class="tb-time">09:30</span><div class="tb-content">Caminar <strong>Camino de Wukang</strong> — arbolada, fotogénica, bordeada de villas de la década de 1930 ahora ocupadas por cafés boutique, galerías y estudios de moda. El edificio Wukang (edificio art déco "proa") es la oportunidad de ganar dinero.</div></div>
+<div class="tb"><span class="tb-time">11:00</span><div class="tb-content"><strong>Tianzifang</strong> (Carril 210, Taikang Road - Línea 9 del metro, estación Dapuqiao, salida 1). Un laberinto de callejones shikumen de los años 30 llenos de estudios de arte, tiendas de artesanía, casas de té y cafés independientes. Piérdete a propósito. Compra recuerdos hechos a mano. Llegue cuando abra (10 a. m.) para vencer a los grupos turísticos.</div></div>
+<div class="tb"><span class="tb-time">13:00</span><div class="tb-content">Almuerzo dentro de Tianzifang: docenas de opciones, desde dumplings tailandeses hasta shanghaineses y bares de cerveza artesanal. Coma en una terraza escondida en el piso de arriba.</div></div>
+<div class="tb"><span class="tb-time">14:30</span><div class="tb-content"><strong>Xintiandi</strong> (10 minutos a pie desde Tianzifang): antiguas casas shikumen restauradas para convertirlas en restaurantes y bares de lujo. Más pulido que Tianzifang, pero vale la pena dar un paseo. Para en el <strong>Sede del Primer Congreso Nacional del PCC</strong> museo si está interesado en la historia moderna.</div></div>
+<div class="tb"><span class="tb-time">16:00</span><div class="tb-content"><strong>Calle Shaoxing / Mansiones Sinan</strong> área: el bloque más artístico de la Concesión, hogar de editoriales, galerías y cafeterías especializadas.</div></div>
+<div class="tb"><span class="tb-time">18:00</span><div class="tb-content">Cóctel antes de la cena en un bar en la azotea de una concesión francesa. Luego cena en un restaurante local de Shanghai: hongshao rou (cerdo estofado rojo), pollo borracho y fideos con aceite de cebollino.</div></div>
+<div class="tb"><span class="tb-time">20:30</span><div class="tb-content">Opcional: <strong>jazz en vivo</strong> en la Concesión Francesa: la zona cuenta con varios clubes de jazz íntimos con actuaciones nocturnas, una auténtica tradición de Shanghai desde la década de 1930.</div></div>
+</div>
+<div class="tips">El FFC se explora mejor a pie o en bicicleta. Las tardes de septiembre son cálidas y agradables. Tome el metro a casa: la línea 1 pasa por la zona (estación South Shaanxi Road).</div>
+</div>
+<div class="day-stay">
+<div class="stay-name">Jinglai Light Luxury Hotel</div>
+<div class="stay-price">36 euros / habitación</div>
+</div>
+</div>
+<!-- DAY 8 -->
+<div class="day-row transit">
+<div class="day-id"><div class="day-num">Día 8</div><div class="day-date">martes, 29 de septiembre</div></div>
+<div class="day-loc">Shanghái → Zhangjiajie<small>G1471 · 12:12 salida</small></div>
+<div class="day-plan">
+<div class="plan-headline">🚄 Mañana en Shanghai · Tren largo a Zhangjiajie</div>
+<div class="plan-desc">El tren sale a las 12:12. Aprovecha bien la mañana.</div>
+<div class="time-blocks">
+<div class="tb"><span class="tb-time">08:00</span><div class="tb-content">Verificar. Dejar las maletas en el hotel o estación. Visita matutina a <strong>Distrito de arte M50</strong> (Moganshan Road): el mejor grupo de galerías contemporáneas de Shanghai en una antigua fábrica de algodón. Entrada gratuita a la mayoría de las galerías. Una escena artística más auténtica que Tianzifang.</div></div>
+<div class="tb"><span class="tb-time">10:00</span><div class="tb-content">Alternativamente: vuelva a visitar el Bund a la luz de la mañana o pruebe <strong>desayuno dim sum</strong> en una casa de té local, un ritual clásico de Shanghai (ordene señalando los carritos).</div></div>
+<div class="tb"><span class="tb-time">11:00</span><div class="tb-content">Dirígete a <strong>Estación de Shanghái Hongqiao</strong>. Deje más tiempo: es grande.</div></div>
+<div class="tb"><span class="tb-time">12:12</span><div class="tb-content">Salida el <strong>G1471</strong> a Zhangjiajiexi. Viaje de 8h 34m: traiga refrigerios, descargue películas, descanse para ir a las montañas.</div></div>
+<div class="tb"><span class="tb-time">20:46</span><div class="tb-content">Llegar <strong>Estación de Zhangjiajiexi</strong>. Taxi al hotel en Wulingyuan (~30 min). Regístrese, cena fácil cerca.</div></div>
+</div>
+</div>
+<div class="day-stay">
+<div class="stay-name">Beian Qingshe Holiday Inn</div>
+<div class="stay-price">19 euros / habitación</div>
+<div class="stay-link"><a href="https://www.trip.com/hotels/detail/?cityId=27&amp;hotelId=22942205" rel="noopener" target="_blank">→ Ver hotel</a></div>
+</div>
+</div>
+<!-- DAY 9 -->
+<div class="day-row zhangjiajie">
+<div class="day-id"><div class="day-num">Día 9</div><div class="day-date">miércoles, 30 de septiembre</div></div>
+<div class="day-loc">Zhangjiajie<small>Montañas Avatar</small></div>
+<div class="day-plan">
+<div class="plan-headline">🏔 Parque Nacional Wulingyuan — Elevador Bailong · Yuanjiajie</div>
+<div class="time-blocks">
+<div class="tb"><span class="tb-time">07:00</span><div class="tb-content">Ingresar <strong>Parque Forestal Nacional de Zhangjiajie</strong> lo antes posible. Compra el pase de 2 días para el parque (~¥258). Dirígete directamente a <strong>Ascensor Bailong</strong> (El ascensor al aire libre más alto del mundo, 326 m, inspiró las montañas flotantes Avatar). Haga cola temprano o tendrá que esperar 2 horas más tarde.</div></div>
+<div class="tb"><span class="tb-time">09:00</span><div class="tb-content">Explorar <strong>Área escénica de Yuanjiajie</strong> en la parte superior, esta es la inspiración directa para las Montañas Aleluya de Avatar. El <strong>Avatar Aleluya Montaña</strong> La plataforma de visualización está aquí. Camine por los paseos marítimos al borde del acantilado para disfrutar de vistas vertiginosas de los pilares de arenisca que emergen del bosque.</div></div>
+<div class="tb"><span class="tb-time">11:30</span><div class="tb-content"><strong>Montaña Tianzi</strong> — Si el tiempo lo permite, tome el teleférico de la montaña Tianzi para disfrutar de un segundo ángulo de visión a través del cañón. El efecto de mar de nubes en los días de niebla es excepcional.</div></div>
+<div class="tb"><span class="tb-time">13:00</span><div class="tb-content">Almuerzo en uno de los restaurantes del parque o almuerzo para llevar en un banco del mirador.</div></div>
+<div class="tb"><span class="tb-time">14:30</span><div class="tb-content">Camina por el <strong>Corriente de látigo dorado</strong> Sendero: una caminata plana de 7,5 km junto al río bajo imponentes pilares de roca con monos salvajes y aguas cristalinas. Uno de los paseos más bellos de China.</div></div>
+<div class="tb"><span class="tb-time">17:00</span><div class="tb-content">Regreso en autobús del parque. Descanso en el hotel.</div></div>
+</div>
+<div class="tips">Use zapatos con buen agarre: los senderos pueden estar húmedos. El sendero Golden Whip Stream es plano y fácil (a diferencia de las empinadas escaleras en otros lugares). La niebla y las nubes bajas hacen que el paisaje sea más dramático y atmosférico.</div>
+</div>
+<div class="day-stay">
+<div class="stay-name">Beian Qingshe Holiday Inn</div>
+<div class="stay-price">19 euros / habitación</div>
+</div>
+</div>
+<!-- DAY 10 -->
+<div class="day-row zhangjiajie">
+<div class="day-id"><div class="day-num">Día 10</div><div class="day-date">Jueves 1 de octubre</div></div>
+<div class="day-loc">Zhangjiajie<small>Montaña Tianmen 🔴 Semana Dorada Día 1</small></div>
+<div class="day-plan">
+<div class="plan-headline">🌉 Montaña Tianmen — Teleférico · Skywalk de cristal · Cueva Heaven's Gate</div>
+<div class="time-blocks">
+<div class="tb"><span class="tb-time">06:30</span><div class="tb-content">Estar en el <strong>Estación del teleférico de la montaña Tianmen</strong> antes de su apertura: este es el teleférico de pasajeros más largo del mundo (7,4 km, aproximadamente 30 minutos de viaje). Semana Dorada Día 1: las colas comienzan a formarse antes de las 7 a.m. Reserve boletos en línea la noche anterior.</div></div>
+<div class="tb"><span class="tb-time">07:30</span><div class="tb-content">Sube para disfrutar de las vistas del amanecer sobre el mar de picos boscosos. Tome el teleférico hasta <strong>Plaza de la Terraza de las Nubes</strong> en la meseta de la cumbre (1.518 m).</div></div>
+<div class="tb"><span class="tb-time">09:00</span><div class="tb-content">Camina el <strong>Skywalk de cristal del acantilado del dragón enrollado</strong> — una pasarela de cristal en voladizo sobre una escarpada caída de 1.400 m. Aterrador, brillante. Reserve con antelación el horario de la pasarela para evitar largas esperas.</div></div>
+<div class="tb"><span class="tb-time">11:00</span><div class="tb-content">Camine o tome el autobús lanzadera hasta <strong>Cueva de Tianmen (Puerta del Cielo)</strong> — un arco natural de 131 m de altura perforado a través del acantilado. La vista desde dentro mirando hacia afuera es impresionante. Sube los 999 escalones a través de la cueva.</div></div>
+<div class="tb"><span class="tb-time">13:00</span><div class="tb-content">Almuerzo en cumbre.</div></div>
+<div class="tb"><span class="tb-time">14:30</span><div class="tb-content">descender sobre el <strong>Carretera de montaña de Tianmen</strong> En autobús: 99 curvas cerradas excavadas en el acantilado. Luego camina de regreso por el bosque. O bajar en teleférico.</div></div>
+<div class="tb"><span class="tb-time">17:00</span><div class="tb-content">De regreso a la ciudad de Zhangjiajie. Explore la zona del mercado central: puestos de comida local y artesanías étnicas Tujia.</div></div>
+</div>
+<div class="tips warn-tip">Día 1 de la Semana Dorada: toda la montaña Tianmen estará llena. Vaya a las 6:30 a. m. o acepte colas de 2 horas. Reserve con antelación billetes para el teleférico y el Skywalk en línea. Los madrugadores disfrutan de las vistas brumosas de la mañana antes de que llegue la multitud.</div>
+</div>
+<div class="day-stay">
+<div class="stay-name">Beian Qingshe Holiday Inn</div>
+<div class="stay-price">19 euros / habitación</div>
+</div>
+</div>
+<!-- DAY 11 -->
+<div class="day-row transit">
+<div class="day-id"><div class="day-num">Día 11</div><div class="day-date">viernes, 2 de octubre</div></div>
+<div class="day-loc">Zhangjiajie → Guilin<small>Tren · Semana Dorada Día 2</small></div>
+<div class="day-plan">
+<div class="plan-headline">🚄 Salida por la mañana hacia Guilin · Llegada por la tarde</div>
+<div class="time-blocks">
+<div class="tb"><span class="tb-time">07:00</span><div class="tb-content">Desayuno temprano y salida. Dirígete a <strong>Estación de Zhangjiajiexi</strong>. Reserve una salida de 09:00 a 10:00: aproximadamente 43 EUR aproximadamente. Confirme el tren exacto con anticipación (reserve con 30 días de anticipación).</div></div>
+<div class="tb"><span class="tb-time">~14:00</span><div class="tb-content">Llegar <strong>Guilin</strong>. Regístrese en City Comfort Inn (área de Two Rivers &amp; Four Lakes, idealmente ubicada).</div></div>
+<div class="tb"><span class="tb-time">15:30</span><div class="tb-content">caminar hasta <strong>Colina de la Trompa de Elefante (Xiangbishan)</strong> — El monumento más emblemático de Guilin, una colina de piedra caliza con forma de elefante bebiendo del río Li. ~75 yuanes. Visita corta (30–45 min).</div></div>
+<div class="tb"><span class="tb-time">17:00</span><div class="tb-content">Pasea por el <strong>Cinturón panorámico de Dos Ríos y Cuatro Lagos</strong> — un canal conectado alrededor del centro de la ciudad con sauces llorones y picos de piedra caliza como telón de fondo.</div></div>
+<div class="tb"><span class="tb-time">19:30</span><div class="tb-content"><strong>Pagodas Gemelas del Sol y la Luna</strong> por la noche, iluminado a través del lago Shan. Una de las escenas nocturnas más bellas de China, que se puede ver gratis desde el sendero junto al lago. Las torres doradas y plateadas brillan en el agua.</div></div>
+<div class="tb"><span class="tb-time">20:30</span><div class="tb-content">Cena: debes probar <strong>Fideos de arroz de Guilin (桂林米粉)</strong> — el plato más famoso de la ciudad, que los lugareños comen en el desayuno y la cena. Busque un lugar local concurrido para disfrutar de la versión más auténtica.</div></div>
+</div>
+<div class="tips">Las Pagodas del Sol y la Luna por la noche son realmente espectaculares y gratuitas: uno de los mejores momentos nocturnos de todo el viaje. Pruebe los fideos de arroz Guilin al menos dos veces; son diferentes a todo lo que hayas probado antes.</div>
+</div>
+<div class="day-stay">
+<div class="stay-name">City Comfort Inn (Guilin)</div>
+<div class="stay-price">57 euros / habitación</div>
+<div class="stay-link"><a href="https://www.trip.com/hotels/detail/?cityId=33&amp;hotelId=3420145" rel="noopener" target="_blank">→ Ver hotel</a></div>
+</div>
+</div>
+<!-- DAY 12 -->
+<div class="day-row Guilin">
+<div class="day-id"><div class="day-num">Día 12</div><div class="day-date">sábado, 3 de octubre</div></div>
+<div class="day-loc">Guilin<small>Excursión de un día a las terrazas de arroz de Longji</small></div>
+<div class="day-plan">
+<div class="plan-headline">🌾 Excursión de un día a las Terrazas de Arroz de Longji (Espinazo del Dragón)</div>
+<div class="plan-desc">Complemento muy recomendable: uno de los paisajes más impresionantes de China, especialmente en la temporada de cosecha de octubre.</div>
+<div class="time-blocks">
+<div class="tb"><span class="tb-time">07:30</span><div class="tb-content">Salga de Guilin en automóvil privado o minibús turístico para <strong>Terrazas de arroz de Longji</strong> (~2–2,5 h de viaje). Reserve a través del hotel la noche anterior (entre 300 y 500 CNY ida y vuelta por automóvil). Vaya temprano para evitar las multitudes de la Semana Dorada.</div></div>
+<div class="tb"><span class="tb-time">10:00</span><div class="tb-content">Llegar a <strong>Área escénica de Jinkeng (Dazhai)</strong>. Tome el teleférico hasta <strong>Pico del Buda Dorado</strong> para disfrutar de las vistas panorámicas más populares de la terraza. En octubre, terrazas doradas descienden de la montaña: la cosecha de arroz tiñe los campos de color ámbar y oro.</div></div>
+<div class="tb"><span class="tb-time">11:30</span><div class="tb-content">Caminata por <strong>Pueblo de Dazhai</strong> — una aldea de la minoría Yao construida entre las terrazas. Las mujeres aquí son famosas por su pelo extremadamente largo (algunas de más de 2 metros). Casas tradicionales de madera se aferran a la ladera.</div></div>
+<div class="tb"><span class="tb-time">13:00</span><div class="tb-content">Almuerzo en una casa de huéspedes del pueblo: comida local de la montaña Yao: arroz de bambú, cerdo curado, hierbas silvestres.</div></div>
+<div class="tb"><span class="tb-time">14:30</span><div class="tb-content">Continúe caminando o en teleférico hasta <strong>Pueblo de Ping'an</strong> para un ángulo diferente de terraza y el famoso mirador "Siete Estrellas Rodean la Luna".</div></div>
+<div class="tb"><span class="tb-time">16:30</span><div class="tb-content">Viaje de regreso a Guilin (~2h). Regrese temprano en la tarde.</div></div>
+<div class="tb"><span class="tb-time">19:30</span><div class="tb-content">Explore el mercado nocturno cerca del hotel: pescado a la cerveza, caracoles rellenos del río Li y dulces locales. La escena gastronómica nocturna de Guilin es excelente.</div></div>
+</div>
+<div class="tips">Octubre es la mejor época para visitar Longji: la cosecha de arroz dorado hace que las terrazas brillen. Si solo puedes hacer un viaje de un día desde Guilin, hazlo este. Las terrazas excavadas en las montañas hace más de 600 años son una extraordinaria hazaña de ingeniería.</div>
+</div>
+<div class="day-stay">
+<div class="stay-name">City Comfort Inn (Guilin)</div>
+<div class="stay-price">57 euros / habitación</div>
+</div>
+</div>
+<!-- DAY 13 -->
+<div class="day-row yangshuo">
+<div class="day-id"><div class="day-num">Día 13</div><div class="day-date">domingo, 4 de octubre</div></div>
+<div class="day-loc">Guilin → Yangshuo<small>Crucero por el río Li</small></div>
+<div class="day-plan">
+<div class="plan-headline">⛵ Crucero por la mañana por el río Li · Yangshuo por la tarde</div>
+<div class="time-blocks">
+<div class="tb"><span class="tb-time">08:00</span><div class="tb-content">Transferir a <strong>Muelle de Guilin Mopanshan</strong>. Sube a bordo del <strong>Crucero por el río Li</strong> (Se recomiendan barcos de 3 estrellas operados por el gobierno como más confiables: salida ~09:00, boleto de crucero ~25 EUR/¥200). El viaje de 4 horas río abajo se considera uno de los paseos en barco más pintorescos del mundo.</div></div>
+<div class="tb"><span class="tb-time">09:00–13:00</span><div class="tb-content">Pasar flotando <strong>83 km de picos kársticos, bosques de bambú, pueblos de pescadores y búfalos de agua</strong> en los arrozales. Puntos destacados clave: Nine Horse Fresco Hill, Yellow Cloth Shoal, Xingping Ancient Town (la escena en el billete de 20 RMB). Trae una buena cámara.</div></div>
+<div class="tb"><span class="tb-time">13:00</span><div class="tb-content">Llegada a Yangshuo. Regístrese en <strong>Shengjin Hotel</strong> (Lao Street, Xingping: un lugar más tranquilo y pintoresco que el centro de la ciudad de Yangshuo).</div></div>
+<div class="tb"><span class="tb-time">14:30</span><div class="tb-content">Explorar <strong>Ciudad antigua de Xingping</strong> a pie: pueblo de pescadores bellamente conservado con antiguas calles de piedra, casas de té y la vista exacta del río Li impresa en el billete de 20 yuanes. Encuentra el mirador y toma la foto.</div></div>
+<div class="tb"><span class="tb-time">16:00</span><div class="tb-content">Alquile una bicicleta (entre 30 y 50 yenes por día en todas partes) y recorra <strong>Ruta panorámica del río Yulong</strong> — caminos tranquilos a través de arrozales y picos kársticos, mucho menos transitados que el centro de Yangshuo.</div></div>
+<div class="tb"><span class="tb-time">18:30</span><div class="tb-content">Dirígete a <strong>Calle oeste de Yangshuo</strong> Para la cena, la principal zona turística, pero buena comida. Pruebe el pescado a la cerveza Yangshuo (carpa de río local cocinada con cerveza local) y los fideos de arroz con pato. Música en vivo en varios bares.</div></div>
+</div>
+<div class="tips">La vista de los billetes de 20 RMB cerca de Xingping es uno de los momentos fotográficos clásicos de China. La ruta ciclista del río Yulong (río Little Li) es más tranquila que la ciudad principal y más pintoresca: muy recomendable antes de hacer turismo en West Street.</div>
+</div>
+<div class="day-stay">
+<div class="stay-name">Shengjin Hotel</div>
+<div class="stay-price">37 euros / habitación</div>
+<div class="stay-link"><a href="https://www.trip.com/hotels/detail/?cityId=871&amp;hotelId=11054825" rel="noopener" target="_blank">→ Ver hotel</a></div>
+</div>
+</div>
+<!-- DAY 14 -->
+<div class="day-row transit">
+<div class="day-id"><div class="day-num">Día 14</div><div class="day-date">lunes, 5 de octubre</div></div>
+<div class="day-loc">Yangshuo → Shenzhen<small>G2905 · 20:04 salida</small></div>
+<div class="day-plan">
+<div class="plan-headline">🚣 Yangshuo Día completo · Tren nocturno a Shenzhen</div>
+<div class="plan-desc">El tren sale tarde (20:04): un día completo para explorar.</div>
+<div class="time-blocks">
+<div class="tb"><span class="tb-time">07:00</span><div class="tb-content"><strong>Amanecer en la montaña Xianggong</strong> (opcional, solo para madrugadores): camine o suba en un carrito de golf antes de las 6 a. m. para disfrutar de la vista más emblemática del amanecer de los picos kársticos sobre la niebla de la mañana. Entrada de 60 CNY. Menos gente tan temprano.</div></div>
+<div class="tb"><span class="tb-time">08:30</span><div class="tb-content"><strong>Rafting en bambú en el río Yulong</strong> — reserve a través del hotel o de un operador local. Una balsa de bambú para 2 personas conducida por un guía local a través del tramo más tranquilo y hermoso del río. 1–1,5 h, ~150–200¥/balsa. No se permiten lanchas a motor, completamente tranquilo.</div></div>
+<div class="tb"><span class="tb-time">11:00</span><div class="tb-content">Después del rafting, alquile bicicletas cerca del muelle y vaya en bicicleta hasta <strong>colina de la luna</strong> — un arco de piedra caliza natural. Subida corta y empinada, vista extraordinaria a través del arco. ~40 CNY de entrada.</div></div>
+<div class="tb"><span class="tb-time">13:30</span><div class="tb-content">Almuerzo de regreso en la ciudad de Yangshuo. Exploración final de West Street en busca de recuerdos.</div></div>
+<div class="tb"><span class="tb-time">16:00</span><div class="tb-content"><strong>Impresión Liu Sanjie</strong> — Espectáculo de luz y música al aire libre de Zhang Yimou en el río Li con montañas reales como telón de fondo (¥250–380 según el asiento, ~70 min). Una de las actuaciones más espectaculares de China. Reserve con anticipación, especialmente durante la Semana Dorada.</div></div>
+<div class="tb"><span class="tb-time">19:00</span><div class="tb-content">Dirígete a la estación Yangshuo/Guilin. Tome un taxi para <strong>Estación Norte de Guilin</strong> (~40 minutos de la ciudad de Yangshuo).</div></div>
+<div class="tb"><span class="tb-time">20:04</span><div class="tb-content">Salida el <strong>G2905</strong> a Shenzhenbei. 2h 43m. Llegada 22:47.</div></div>
+</div>
+<div class="tips">El espectáculo Impression Liu Sanjie es excepcional, pero consulte los horarios de temporada. El rafting en bambú en el río Yulong es el punto culminante pacífico de Yangshuo: más tranquilo e íntimo que el crucero principal por el río Li.</div>
+</div>
+<div class="day-stay">
+<div class="stay-name">Estancia en Shenzhen</div>
+<div class="stay-price">24 euros / habitación</div>
+<div class="stay-link"><a href="https://www.trip.com/hotels/detail/?cityId=30&amp;hotelId=104437485" rel="noopener" target="_blank">→ Ver hotel</a></div>
+</div>
+</div>
+<!-- DAY 15 -->
+<div class="day-row shenzhen">
+<div class="day-id"><div class="day-num">Día 15</div><div class="day-date">martes, 6 de octubre</div></div>
+<div class="day-loc">Shenzhen (+ Hong Kong)<small>Excursión de un día a Hong Kong 🔴 Festival del Medio Otoño</small></div>
+<div class="day-plan">
+<div class="plan-headline">🌃 Excursión de un día a Hong Kong: Pico Victoria · Star Ferry · TST</div>
+<div class="plan-desc">Nota: el 6 de octubre es el Festival del Medio Otoño: Hong Kong tendrá un ambiente festivo y linternas por todas partes.</div>
+<div class="time-blocks">
+<div class="tb"><span class="tb-time">08:00</span><div class="tb-content">Cruzar a Hong Kong desde <strong>Puerto de la Bahía de Shenzhen</strong> o Luohu (Lok Ma Chau). Utilice el metro de Shenzhen hasta la frontera (Línea 1) y luego el MTR de Hong Kong. Consigue un <strong>Tarjeta de pulpo</strong> (Depósito de HK$50 + recarga): funciona en todo el transporte y en las tiendas de Hong Kong.</div></div>
+<div class="tb"><span class="tb-time">09:30</span><div class="tb-content"><strong>Pico Victoria</strong> — Tome el Peak Tram (estación central, salida J2, luego camine 10 minutos; el tranvía pasa cada 10 minutos). Compre un boleto de regreso + complemento Sky Terrace 428 (~HK$210 en total). Llegue temprano para disfrutar de vistas despejadas antes de la bruma de la tarde. Realice la caminata de circuito de 1,5 horas por Lugard y Harlech Roads para disfrutar de vistas del bosque y diferentes ángulos del horizonte.</div></div>
+<div class="tb"><span class="tb-time">12:00</span><div class="tb-content">Autobús n.º 15 desde Peak hasta Central Pier (~35 min). En el camino, busque dim sum en un cha chaan teng (restaurante estilo Hong Kong) local en Central.</div></div>
+<div class="tb"><span class="tb-time">13:30</span><div class="tb-content"><strong>ferry estrella</strong> desde Central Pier hasta Tsim Sha Tsui (Kowloon), uno de los mejores viajes cortos en ferry del mundo. 11 minutos a través del puerto Victoria con una impresionante vista del horizonte. La cubierta superior cuesta un poco más. Vale la pena tomar ambos sentidos.</div></div>
+<div class="tb"><span class="tb-time">14:00</span><div class="tb-content"><strong>Avenida de las Estrellas</strong> (Paseo marítimo de TST): tributo a la industria cinematográfica de Hong Kong con huellas de manos y vistas del puerto. Camine hacia el este hasta el <strong>Paseo marítimo de Tsim Sha Tsui</strong> para la foto clásica del horizonte de la isla HK.</div></div>
+<div class="tb"><span class="tb-time">15:30</span><div class="tb-content"><strong>Calle Nathan/Mong Kok</strong> — la verdadera experiencia callejera de Hong Kong. Abarrotado, iluminado con luces de neón, caótico en el mejor de los casos. Ladies' Market para comprar souvenirs baratos, Temple Street Night Market (a partir de las 18:00).</div></div>
+<div class="tb"><span class="tb-time">18:00</span><div class="tb-content">Noche del Festival del Medio Otoño — <strong>Parque Victoria</strong> En Causeway Bay se celebra un tradicional carnaval de faroles. O mira el <strong>Sinfonía de luces</strong> desde el paseo marítimo TST (20:00): espectáculo gratuito de luces y láser disparado desde ambos lados del puerto.</div></div>
+<div class="tb"><span class="tb-time">21:30</span><div class="tb-content">Regreso a Shenzhen por el MTR hasta la frontera entre Lo Wu y Lok Ma Chau.</div></div>
+</div>
+<div class="tips">Obtenga la tarjeta Octopus a su llegada: funciona en todas partes y ahorra tiempo. Para llegar al pico, vaya temprano en la mañana (antes de las 10 a. m.) para disfrutar de las vistas más claras. El Star Ferry es una de las mejores experiencias de transporte del mundo: tómelo en ambos sentidos.</div>
+</div>
+<div class="day-stay">
+<div class="stay-name">Estancia en Shenzhen</div>
+<div class="stay-price">24 euros / habitación</div>
+</div>
+</div>
+<!-- DAY 16 -->
+<div class="day-row macau">
+<div class="day-id"><div class="day-num">Día 16</div><div class="day-date">miércoles, 7 de octubre</div></div>
+<div class="day-loc">Shenzhen → Macao<small>Noche en el casco antiguo</small></div>
+<div class="day-plan">
+<div class="plan-headline">🎰 Casco antiguo de Macao · Ruinas de San Pablo · Plaza del Senado</div>
+<div class="time-blocks">
+<div class="tb"><span class="tb-time">09:00</span><div class="tb-content">Viaje de Shenzhen a Macao. Mejor ruta: tomar el metro hasta <strong>Terminal de ferry de Shekou</strong> (Línea 2, estación Shekou Cruise Center) y tomar un <strong>Ferry TurboJet o Cotai Jet</strong> directo a Macao (~1h, ~¥200–280). Alternativamente, ferry desde HK (~75 min).</div></div>
+<div class="tb"><span class="tb-time">11:00</span><div class="tb-content">Llegada a Macao. Camine o tome un taxi hasta <strong>Plaza del Senado (Largo del Senado)</strong> — el centro histórico, pavimentado con azulejos ondulados portugueses en blanco y negro. Sitio del Patrimonio Mundial. Rodeado de edificios coloniales de colores pastel, panaderías de tartas de huevo y tiendas de galletas de almendras.</div></div>
+<div class="tb"><span class="tb-time">12:00</span><div class="tb-content"><strong>Ruinas de San Pablo</strong> — la icónica fachada de la iglesia jesuita del siglo XVII. Sube detrás para disfrutar de una vista panorámica del casco antiguo. Contraste fascinante: una iglesia barroca europea en el sur de China.</div></div>
+<div class="tb"><span class="tb-time">13:00</span><div class="tb-content">Almuerzo: <strong>tartas de huevo y bollos de chuleta de cerdo</strong> (grapas macaenses) en la zona de la Plaza del Senado. Lord Stow's o Margaret's Café son los mejores lugares para hacer tarta de huevo.</div></div>
+<div class="tb"><span class="tb-time">14:30</span><div class="tb-content">Camina hasta <strong>Fortaleza del Monte</strong> (gratis): una fortaleza portuguesa del siglo XVII con vistas panorámicas del casco antiguo. El Museo adjunto de Macao (¥15) recorre la notable historia del territorio.</div></div>
+<div class="tb"><span class="tb-time">16:00</span><div class="tb-content"><strong>Templo A-Ma</strong> — uno de los templos más antiguos de Macao, un santuario taoísta de 1488. Las espirales de incienso y los faroles rojos crean una atmósfera poderosa. Muy diferente a los templos de China continental.</div></div>
+<div class="tb"><span class="tb-time">17:30</span><div class="tb-content">Regístrese en <strong>Pensão Família</strong> (zona del casco antiguo: base ideal para las calles patrimoniales).</div></div>
+<div class="tb"><span class="tb-time">19:00</span><div class="tb-content">Paseo nocturno por el casco antiguo iluminado por la noche. Pruebe la cena macaense-portuguesa: pollo africano, bacalhau portugués, minchi (carne picada con patatas). Luego, si tiene curiosidad, eche un vistazo al exterior de un casino: el Venetian es el edificio más grande de Asia.</div></div>
+</div>
+<div class="tips">El centro histórico de Macao, declarado Patrimonio de la Humanidad por la UNESCO, es sorprendentemente compacto y se puede recorrer a pie en una tarde. Las tartas de huevo portuguesas son imprescindibles: cómprelas calientes en una panadería en la Plaza del Senado. Siga gastando modestamente; Incluso las salas de casino gratuitas son un espectáculo.</div>
+</div>
+<div class="day-stay">
+<div class="stay-name">Pensão Família</div>
+<div class="stay-price">37 euros / habitación</div>
+<div class="stay-link"><a href="https://www.trip.com/hotels/detail/?cityId=59&amp;hotelId=114524153" rel="noopener" target="_blank">→ Ver hotel</a></div>
+</div>
+</div>
+<!-- DAY 17 -->
+<div class="day-row zhongshan">
+<div class="day-id"><div class="day-num">Día 17</div><div class="day-date">Jueves 8 de octubre</div></div>
+<div class="day-loc">Macao → Zhongshan<small>Comienza la visita familiar</small></div>
+<div class="day-plan">
+<div class="plan-headline">🚌 Cruce a Zhongshan · Ciudad patrimonial de Sun Yat-sen</div>
+<div class="time-blocks">
+<div class="tb"><span class="tb-time">09:00</span><div class="tb-content">Mañana: último vistazo a Macao. Coge tartas de huevo para el camino.</div></div>
+<div class="tb"><span class="tb-time">10:00</span><div class="tb-content">Cruzar de Macao a <strong>Zhuhai/Zhongshan</strong> a través de la puerta fronteriza de Gongbei o el puente Hong Kong-Zhuhai-Macao (HZMB, inaugurado en 2018, el puente marítimo más largo del mundo). Taxi o autobús desde Zhuhai a la ciudad de Zhongshan (~45 min, ~¥80).</div></div>
+<div class="tb"><span class="tb-time">12:00</span><div class="tb-content">Regístrese en <strong>Vienna Hotel</strong> y conocer a la familia.</div></div>
+<div class="tb"><span class="tb-time">14:00</span><div class="tb-content">Visita <strong>Antigua residencia de Sun Yat-sen</strong> en la aldea de Cuiheng (~20 km al sur de la ciudad de Zhongshan), el lugar de nacimiento y hogar familiar del padre fundador de la China moderna. Pueblo bien conservado de la era Qing. Pequeño museo, ~¥20.</div></div>
+<div class="tb"><span class="tb-time">17:00</span><div class="tb-content">De vuelta en Zhongshan. Cena de reunión familiar por la noche: cocina cantonesa en un restaurante de mariscos local. Ostras frescas, ganso asado, dim sum y especialidades locales.</div></div>
+</div>
+<div class="tips">Zhongshan es la ciudad natal de Sun Yat-sen y se enorgullece de su herencia. La aldea de Cuiheng y el parque conmemorativo son realmente interesantes por el contexto histórico que ofrece sobre la transformación de China de imperio a república.</div>
+</div>
+<div class="day-stay">
+<div class="stay-name">Vienna Hotel</div>
+<div class="stay-price">20 euros / habitación</div>
+<div class="stay-link"><a href="https://www.trip.com/hotels/detail/?cityId=553&amp;hotelId=6758490" rel="noopener" target="_blank">→ Ver hotel</a></div>
+</div>
+</div>
+<!-- DAY 18 -->
+<div class="day-row zhongshan">
+<div class="day-id"><div class="day-num">Día 18</div><div class="day-date">viernes, 9 de octubre</div></div>
+<div class="day-loc">Zhongshan<small>Día familiar · 1</small></div>
+<div class="day-plan">
+<div class="plan-headline">👨‍👩‍👧 Día familiar · Ciudad de Zhongshan</div>
+<div class="time-blocks">
+<div class="tb"><span class="tb-time">Día completo</span><div class="tb-content">Tiempo en familia y exploración local. Sugerencias si la flexibilidad lo permite: caminar por el <strong>Calle peatonal de la plaza Xingzhong</strong> (al lado del hotel), explore los excelentes mercados de alimentos de Zhongshan, visite un <strong>casa de té cantonesa local</strong> para la mañana yum cha con la familia.</div></div>
+<div class="tb"><span class="tb-time">Tarde</span><div class="tb-content">Opcional: <strong>Parque Zhongshan</strong> (parque urbano gratuito, muy local) o el <strong>Museo Zhongshan</strong> para la historia regional. Vale la pena pasear por los distritos de canales de la ciudad y las calles residenciales más antiguas para disfrutar de la auténtica vida de Guangdong.</div></div>
+<div class="tb"><span class="tb-time">Noche</span><div class="tb-content">Cena familiar: lo más destacado es la cocina casera cantonesa local. Carnes asadas, mariscos, sopas cantonesas.</div></div>
+</div>
+<div class="tips">Zhongshan es una ciudad más tranquila de Guangdong con excelente comida local y un ritmo relajado: una desaceleración muy bienvenida después de dos semanas de intenso turismo. Deja que la familia te muestre sus lugares locales.</div>
+</div>
+<div class="day-stay">
+<div class="stay-name">Vienna Hotel</div>
+<div class="stay-price">20 euros / habitación</div>
+</div>
+</div>
+<!-- DAY 19 -->
+<div class="day-row zhongshan">
+<div class="day-id"><div class="day-num">Día 19</div><div class="day-date">sábado, 10 de octubre</div></div>
+<div class="day-loc">Zhongshan<small>Día familiar · 2</small></div>
+<div class="day-plan">
+<div class="plan-headline">👨‍👩‍👧 Día en Familia · Excursión de un día opcional</div>
+<div class="time-blocks">
+<div class="tb"><span class="tb-time">Día completo</span><div class="tb-content">Otro día más en familia. Si desea hacer una excursión de un día: Zhongshan está bien conectado: fácil acceso en ferry o autobús a <strong>Guangzhou</strong> (~1,5 h, ideal para Canton Tower, Shamian Island y comida cantonesa), o un día en <strong>Zhuhai</strong> (una ciudad costera habitable justo en la frontera con Macao con encantadores paseos marítimos).</div></div>
+<div class="tb"><span class="tb-time">Noche</span><div class="tb-content">Cena familiar final. Esta es la última velada completa con la familia: celébrela con una comida cantonesa estilo banquete adecuado.</div></div>
+</div>
+<div class="tips">Si visita Guangzhou: el <strong>Torre de Cantón</strong> (600 m, el más alto de China al sur de Shanghai) y <strong>Isla Shamian</strong> (barrio colonial europeo con calles bordeadas de banianos) son excelentes lugares para pasar medio día. La comida de Guangzhou es justificadamente famosa.</div>
+</div>
+<div class="day-stay">
+<div class="stay-name">Vienna Hotel</div>
+<div class="stay-price">20 euros / habitación</div>
+</div>
+</div>
+<!-- DAY 20 -->
+<div class="day-row guangzhou">
+<div class="day-id"><div class="day-num">Día 20</div><div class="day-date">domingo, 11 de octubre</div></div>
+<div class="day-loc">Zhongshan → Guangzhou<small>Noche de aeropuerto</small></div>
+<div class="day-plan">
+<div class="plan-headline">🛁 Traslado a Guangzhou · Noche de Spa en el Aeropuerto</div>
+<div class="time-blocks">
+<div class="tb"><span class="tb-time">Mañana</span><div class="tb-content">Última mañana en Zhongshan. Di adiós. Último desayuno cantonés.</div></div>
+<div class="tb"><span class="tb-time">~13:00</span><div class="tb-content">Transferir a <strong>Guangzhou (CAN)</strong>. Opciones: Tren de alta velocidad desde la estación Zhongshan Norte (~1h hasta Guangzhou Sur), o taxi directo (~1,5h, ~¥250). Si llega temprano, tómese tiempo para <strong>Isla Shamian</strong> — un tranquilo distrito colonial en Guangzhou con edificios blancos europeos, calles arboladas y una atmósfera completamente diferente al resto de la ciudad.</div></div>
+<div class="tb"><span class="tb-time">16:00</span><div class="tb-content">Regístrese en el <strong>zona aeropuerto spa/hotel</strong> (80 EUR, formato de 12 horas). Estas instalaciones de spa diurno cantonesas suelen incluir baños termales, saunas, áreas de descanso, comida y bebidas, una forma perfectamente civilizada de pasar la última noche antes de la salida a las 6 a.m.</div></div>
+<div class="tb"><span class="tb-time">Noche</span><div class="tb-content">Relájese, descomprima y duerma bien antes del vuelo temprano.</div></div>
+</div>
+<div class="tips">Los hoteles con spa de aguas termales estilo Guangzhou cerca del aeropuerto CAN son una experiencia realmente excelente en China: muy recomendable. Pida el congee cantonés (jook) en el restaurante del spa. Configure una alarma para las 05:00.</div>
+</div>
+<div class="day-stay">
+<div class="stay-name">Estancia en el spa del aeropuerto</div>
+<div class="stay-price">80 euros</div>
+</div>
+</div>
+<!-- DAY 21 -->
+<div class="day-row transit">
+<div class="day-id"><div class="day-num">Día 21</div><div class="day-date">lunes, 12 de octubre</div></div>
+<div class="day-loc">Guangzhou → Frankfurt<small>Vuelta a casa</small></div>
+<div class="day-plan">
+<div class="plan-headline">✈ Salida — CAN → ALA → FRA</div>
+<div class="time-blocks">
+<div class="tb"><span class="tb-time">05:00</span><div class="tb-content">Despertar. Transferir a <strong>Aeropuerto de Guangzhou Baiyun (CAN)</strong>. Regístrese temprano: las salidas internacionales requieren llegar entre 2,5 y 3 horas antes.</div></div>
+<div class="tb"><span class="tb-time">06:50</span><div class="tb-content">Salida CAN el <strong>Aire Astaná KC188</strong> a Almatý (ALA). 6h 35m de vuelo.</div></div>
+<div class="tb"><span class="tb-time">10:25</span><div class="tb-content">Llegada a Almatý. Tránsito de 1 hora y 20 minutos: estrecho pero manejable si no hay retrasos.</div></div>
+<div class="tb"><span class="tb-time">11:45</span><div class="tb-content">Salida de Almaty el <strong>KC221</strong> a Frankfurt. 8h 15m.</div></div>
+<div class="tb"><span class="tb-time">17:00</span><div class="tb-content">Llegar <strong>Frankfurt (FRA)</strong>. Hogar. 21 días, 8 ciudades, un país extraordinario. 🇩🇪</div></div>
+</div>
+<div class="tips">La escala en Almaty es de 1h 20m; manténgase alerta a la puerta. Air Astana es una aerolínea confiable. Las llegadas a Frankfurt son eficientes; Espere un procesamiento aduanero normal de la UE.</div>
+</div>
+<div class="day-stay"><div class="stay-name">En viaje</div></div>
+</div>
+</div><!-- /itinerary-wrap -->
+<p class="footnote">Los costos incluyen vuelos, alojamiento, trenes principales, crucero por el río Li y comida a 15 EUR/persona/día. Metro local, taxis, teleféricos, entradas y actividades no incluidas. Todos los horarios locales. Precios orientativos — confirmar al hacer la reserva. Semana Dorada (del 1 al 8 de octubre): reserve todo el transporte y las atracciones principales con 30 a 60 días de anticipación.</p>
+</div><!-- /page -->
+<script>
+    (function () {
+        var buttons = Array.prototype.slice.call(document.querySelectorAll('.lang-btn'));
+        var helper = document.getElementById('lang-helper');
+
+        var helperLabel = {
+            en: 'Language:',
+            'zh-CN': '语言：',
+            es: 'Idioma:'
+        };
+
+        var langToFile = {
+            en: 'itinerary_dad.html',
+            'zh-CN': 'itinerary_dad_zh.html',
+            es: 'itinerary_dad_es.html'
+        };
+
+        function setActiveButton(lang) {
+            buttons.forEach(function (btn) {
+                btn.classList.toggle('is-active', btn.getAttribute('data-lang') === lang);
+            });
+        }
+
+        function setHelperLabel(lang) {
+            helper.textContent = helperLabel[lang] || helperLabel.en;
+        }
+
+        function switchLanguage(lang) {
+            var targetFile = langToFile[lang] || langToFile.en;
+            var current = window.location.pathname.split('/').pop();
+            if (current !== targetFile) {
+                window.location.href = targetFile;
+                return;
+            }
+            document.documentElement.setAttribute('lang', lang === 'zh-CN' ? 'zh' : lang);
+            setActiveButton(lang);
+            setHelperLabel(lang);
+        }
+
+        buttons.forEach(function (btn) {
+            btn.addEventListener('click', function () {
+                switchLanguage(btn.getAttribute('data-lang'));
+            });
+        });
+
+        setHelperLabel('en');
+        setActiveButton('en');
+    })();
+</script>
+</body>
+</html>

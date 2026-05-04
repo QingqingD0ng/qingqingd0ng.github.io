@@ -24,6 +24,13 @@ body{font-family:'Sora',sans-serif;font-size:15px;line-height:1.6;color:var(--in
   radial-gradient(ellipse at 100% 100%,#e8f0ef 0%,transparent 50%),#faf6f0;min-height:100vh}
 .page{max-width:1280px;margin:0 auto;padding:32px 20px 60px}
 
+.lang-switcher{display:flex;justify-content:flex-end;gap:8px;margin-bottom:12px}
+.lang-btn{border:1px solid var(--border);background:var(--surface);color:var(--ink-soft);
+  font-family:'DM Mono',monospace;font-size:.72rem;letter-spacing:.04em;padding:7px 10px;
+  border-radius:999px;cursor:pointer;transition:all .2s}
+.lang-btn:hover{border-color:#c7b49f;color:var(--ink)}
+.lang-btn.active{background:var(--ink);color:#f5ede0;border-color:var(--ink)}
+
 /* HERO */
 .hero{position:relative;overflow:hidden;background:var(--ink);border-radius:20px;
   padding:36px 40px;margin-bottom:18px;box-shadow:var(--sh2)}
@@ -159,6 +166,13 @@ body{font-family:'Sora',sans-serif;font-size:15px;line-height:1.6;color:var(--in
 </head>
 <body>
 <div class="page">
+
+<div class="lang-switcher" aria-label="Language switcher">
+  <button class="lang-btn active" data-lang="en" type="button">English</button>
+  <button class="lang-btn" data-lang="es" type="button">Espanol</button>
+  <button class="lang-btn" data-lang="zh" type="button">中文</button>
+</div>
+<div id="google_translate_element" style="display:none"></div>
 
 <!-- HERO -->
 <header class="hero">
@@ -757,5 +771,276 @@ body{font-family:'Sora',sans-serif;font-size:15px;line-height:1.6;color:var(--in
 <p class="fn">Book Macau hotel early, Chongqing hotel for both nights immediately, and reserve the Guilin Li River cruise, Zhangjiajie cable cars, and Beijing Forbidden City as soon as dates are confirmed.</p>
 
 </div>
+<script>
+(() => {
+  const page = document.querySelector('.page');
+  const buttons = Array.from(document.querySelectorAll('.lang-btn'));
+  const base = {
+    title: document.title,
+    eyebrow: document.querySelector('.eyebrow')?.textContent || '',
+    heroTitle: document.querySelector('.hero h1')?.innerHTML || '',
+    heroSub: document.querySelector('.hero-sub')?.textContent || '',
+    ptitle: Array.from(document.querySelectorAll('.ptitle')).map((el) => el.textContent),
+    legendHead: document.querySelector('.legend > span')?.textContent || '',
+    legend: Array.from(document.querySelectorAll('.legend .li')).map((el) => el.textContent.trim()),
+    thead: Array.from(document.querySelectorAll('.thead > div')).map((el) => el.textContent),
+    dloc: Array.from(document.querySelectorAll('.dloc')).map((el) => el.innerHTML),
+    dh: Array.from(document.querySelectorAll('.dh')).map((el) => el.textContent),
+    tip: Array.from(document.querySelectorAll('.tip')).map((el) => el.innerHTML),
+    fn: document.querySelector('.fn')?.textContent || '',
+    keyTips: Array.from(document.querySelectorAll('.panel.gold-bg .nlist li')).map((el) => el.innerHTML),
+  };
+
+  const translations = {
+    es: {
+      title: 'Viaje a China 2026 — HKG → BJS · 22 Dias',
+      eyebrow: '22 Dias · 27 Sep – 18 Oct, 2026 · Sur → Norte',
+      heroTitle: 'Un Viaje por <em>China</em>',
+      heroSub: 'Hong Kong · Shenzhen · Macao · Zhongshan · Guilin · Yangshuo · Chongqing · Zhangjiajie · Shanghai · Beijing',
+      ptitle: ['Alojamiento', 'Consejos Clave'],
+      legendHead: 'Clave de ciudades:',
+      legend: ['Hong Kong', 'Shenzhen', 'Macao', 'Zhongshan', 'Guilin', 'Yangshuo', 'Chongqing', 'Zhangjiajie', 'Shanghai', 'Beijing', 'Transito'],
+      thead: ['Dia', 'Ubicacion', 'Plan', 'Alojamiento'],
+      keyTips: [
+        '<strong>Tarjeta Octopus:</strong> Consiguela al llegar a HKG. Sirve para MTR, buses, tranvias y tiendas en HK, y tambien para Shenzhen Metro si recargas la cartera del continente.',
+        '<strong>HKG → Shenzhen:</strong> Tren de alta velocidad desde West Kowloon a Shenzhen North/Futian: 14–25 min, ~€8. Sale cada 5–15 min, no hace falta reservar.',
+        '<strong>Shenzhen → Macao en ferry:</strong> Terminal Shekou (Metro Linea 2). ~1h, ~€25–35. Reserva online durante Golden Week.',
+        '<strong>Alipay / WeChat Pay:</strong> Vincula una tarjeta extranjera antes de entrar a China continental. Muchos comercios solo aceptan pago QR.',
+        '<strong>Aguas termales de Zhongshan (中山温泉):</strong> El resort original abrio en 1980 y fue el primer complejo conjunto de China. Hay entradas de dia y de tarde.',
+        '<strong>Guilin + Zhangjiajie despues del 5 Oct:</strong> Bajan las multitudes 60–70%, bajan precios y empieza el follaje de otono.',
+        '<strong>Ciudad Prohibida (Beijing):</strong> Reserva en el mini-programa oficial de WeChat, hasta 7 dias antes (~€8). Se agota rapido.',
+        '<strong>PEK T3:</strong> Comida 24h, asientos comodos y salas Priority Pass. El check-in suele abrir sobre las 04:00 para vuelos de manana.',
+      ],
+      dloc: [
+        'Hong Kong<small>Llegada por la tarde</small>',
+        'Hong Kong<small>→ Shenzhen por la noche</small>',
+        'Shenzhen<small>Noche 2 de 2</small>',
+        'Shenzhen → Macao<small>Golden Week Dia 1 🎆</small>',
+        'Macao → Zhongshan<small>Llega la familia 🏡</small>',
+        'Zhongshan<small>Yum cha + aguas termales ♨</small>',
+        'Zhuhai<small>Excursion costera</small>',
+        'Guangzhou<small>Excursion de un dia → Zhongshan</small>',
+        'Zhongshan → Guilin<small>Salida por la manana</small>',
+        'Guilin → Yangshuo<small>Crucero por el Rio Li 🛶</small>',
+        'Yangshuo → Chongqing<small>Rio Yulong · tarde en la ciudad</small>',
+        'Chongqing<small>Dia completo en la ciudad</small>',
+        'Chongqing → Zhangjiajie<small>Salida despues de comer</small>',
+        'Zhangjiajie<small>Montanas Avatar Dia 1</small>',
+        'Zhangjiajie<small>Puente de Cristal · Tianmen</small>',
+        'Zhangjiajie → Shanghai<small>Largo dia de tren</small>',
+        'Shanghai<small>Pudong + Casco Antiguo</small>',
+        'Shanghai → Beijing<small>Tren G 4h 28m</small>',
+        'Beijing<small>Ciudad Prohibida · Hutongs</small>',
+        'Beijing<small>Gran Muralla · Templo</small>',
+        'Beijing<small>Salida de vuelo</small>',
+      ],
+      dh: [
+        '🌆 Llegada a HKG · Art Park de West Kowloon · Fachada M+ · Calles nocturnas de Mong Kok',
+        '🏔 Dia completo en HK — TST · Victoria Peak · Central · Temple Street → Shenzhen',
+        '🏙 Huaqiangbei · OCT Loft · Shenzhen Bay Park',
+        '⛴ Ferry a Macao · Plaza del Senado · Ruinas de San Pablo · Wynn Palace',
+        '🌅 Manana libre en Macao · Frontera de Gongbei · Cena de reunion familiar',
+        '♨ Yum Cha · Resort de aguas termales de Zhongshan',
+        '🐟 Estatua de la Pescadora de Zhuhai · Paseo maritimo Lovers’ Road',
+        '🏙 Isla Shamian · Mercado de relojes de Zhanxi · Canton Tower · Cena de despedida',
+        '🚄 Salida por la manana · Llegada a Guilin',
+        '🛶 Crucero por el Rio Li (83 km) · Xianggong Hill · Pescado a la cerveza',
+        '🚣 Rafting en Yulong · Tren a Chongqing · Hongya Cave',
+        '🌶 Ciqikou · Teleferico · Hot pot · Noche en Chongqing',
+        '🚄 Manana en Chongqing · Salida despues de comer · Llegada a Zhangjiajie',
+        '🏔 Parque de Wulingyuan · Elevador Bailong · Yuanjiajie · Golden Whip Stream',
+        '🌁 Puente de Cristal · Gran Canon · Paseo en Tianmen Mountain',
+        '🚄 Paseo al amanecer · Tren a Shanghai · The Bund de noche',
+        '🌆 Torre de Shanghai · Yu Garden · The Bund · Concesion Francesa',
+        '🚄 Tren bala a Beijing · Houhai · Pato pekines',
+        '🏯 Tiananmen · Ciudad Prohibida · Jingshan · Nanluoguxiang',
+        '🏔 Gran Muralla de Mutianyu · Templo del Cielo',
+        '✈️ Salida de madrugada',
+      ],
+      tip: [
+        'Noche de llegada local en Kowloon y con pocos traslados. El Dia 2 mantiene el cruce del puerto, Peak y Central sin repetir la misma secuencia.',
+        '⚠️ Ultimos trenes West Kowloon → Shenzhen Futian sobre las 22:30. Configura <strong>WeChat Pay + Alipay</strong> al llegar.',
+        'Terminal de ferry Shekou (Linea 2) para Macao manana. Golden Week empieza el 1 Oct; reserva alojamiento cuanto antes.',
+        'El centro historico UNESCO se recorre a pie en medio dia. La noche del 1 Oct puede haber fuegos artificiales.',
+        'Reserva la sesion de aguas termales de la tarde con antelacion durante Golden Week.',
+        'Zhuhai esta a unos 40 min de Zhongshan en taxi o bus, con paseo maritimo amplio y menos multitudes.',
+        '⚠️ En mercados de relojes: revisar calidad, probar funciones y negociar.',
+        'Fideos de arroz de Guilin: excelentes y baratos (~€2). Tras Golden Week baja mucho la afluencia.',
+        'Octubre en el Rio Li: luz dorada, buen nivel de agua y menos gente.',
+        'Salida mas tranquila desde Yangshuo y llegada a Chongqing a tiempo para el skyline nocturno.',
+        'Confirma la segunda noche en Chongqing al reservar. Asi la ciudad no queda solo como escala.',
+        'Manten este dia ligero para llegar descansado a los parques de Zhangjiajie.',
+        'Tras Golden Week hay menos colas. Lleva una capa extra: en altura refresca.',
+        'Tianmen y el Puente de Cristal son zonas distintas del parque principal: entradas separadas.',
+        'Mitad de octubre en Beijing: clima ideal y colores de otono. Reserva Ciudad Prohibida el mismo dia de llegada.',
+        'Mutianyu en octubre es excelente por color y visibilidad. Esta noche es de traslado al aeropuerto para salida 03:00.',
+      ],
+      fn: 'Reserva temprano el hotel de Macao, confirma cuanto antes las dos noches en Chongqing y asegura crucero del Rio Li, cable cars de Zhangjiajie y Ciudad Prohibida en cuanto cierres fechas.'
+    },
+    zh: {
+      title: '2026中国之旅 — HKG → BJS · 22天',
+      eyebrow: '22天 · 2026年9月27日–10月18日 · 由南到北',
+      heroTitle: '一段穿越<em>中国</em>的旅程',
+      heroSub: '香港 · 深圳 · 澳门 · 中山 · 桂林 · 阳朔 · 重庆 · 张家界 · 上海 · 北京',
+      ptitle: ['住宿', '关键提示'],
+      legendHead: '城市标识：',
+      legend: ['香港', '深圳', '澳门', '中山', '桂林', '阳朔', '重庆', '张家界', '上海', '北京', '中转'],
+      thead: ['日期', '地点', '行程', '住宿'],
+      keyTips: [
+        '<strong>八达通：</strong>到达香港机场后即可购买。可用于港铁、巴士、电车和便利店；开通内地钱包后也可用于深圳地铁。',
+        '<strong>香港 → 深圳：</strong>西九龙高铁到深圳北/福田，14–25分钟，约€8。班次密集，一般无需提前预订。',
+        '<strong>深圳 → 澳门渡轮：</strong>蛇口码头（地铁2号线），约1小时，约€25–35。黄金周请提前订票。',
+        '<strong>支付宝 / 微信支付：</strong>入境内地前先绑定外卡，很多商户只支持扫码支付。',
+        '<strong>中山温泉（中山温泉）：</strong>1980年开业，是中国最早的中外合资度假村之一，可选白天或傍晚场。',
+        '<strong>10月5日后桂林+张家界：</strong>人流明显下降，价格回落，秋色开始进入最佳期。',
+        '<strong>故宫（北京）：</strong>通过官方微信小程序预约，最多提前7天（约€8），非常容易售罄。',
+        '<strong>首都机场T3：</strong>24小时餐饮、休息座位、Priority Pass贵宾厅。早班机通常约04:00开放值机。',
+      ],
+      dloc: [
+        '香港<small>傍晚抵达</small>',
+        '香港<small>→ 夜间前往深圳</small>',
+        '深圳<small>第2晚（共2晚）</small>',
+        '深圳 → 澳门<small>黄金周第1天 🎆</small>',
+        '澳门 → 中山<small>与家人会合 🏡</small>',
+        '中山<small>饮茶 + 温泉 ♨</small>',
+        '珠海<small>海岸一日游</small>',
+        '广州<small>当日往返 → 中山</small>',
+        '中山 → 桂林<small>上午出发</small>',
+        '桂林 → 阳朔<small>漓江游船 🛶</small>',
+        '阳朔 → 重庆<small>遇龙河 · 下午在镇上</small>',
+        '重庆<small>整日城市游</small>',
+        '重庆 → 张家界<small>午后出发</small>',
+        '张家界<small>阿凡达山峰 第1天</small>',
+        '张家界<small>玻璃桥 · 天门山</small>',
+        '张家界 → 上海<small>长途火车日</small>',
+        '上海<small>浦东 + 老城厢</small>',
+        '上海 → 北京<small>G字头 4小时28分</small>',
+        '北京<small>故宫 · 胡同</small>',
+        '北京<small>长城 · 天坛</small>',
+        '北京<small>航班离境</small>',
+      ],
+      dh: [
+        '🌆 抵达香港 · 西九文化区艺术公园 · M+外立面 · 旺角夜街',
+        '🏔 香港全天 — 尖沙咀 · 太平山 · 中环 · 庙街 → 深圳',
+        '🏙 华强北 · OCT Loft · 深圳湾公园',
+        '⛴ 渡轮赴澳门 · 议事亭前地 · 大三巴 · 永利皇宫',
+        '🌅 澳门自由上午 · 拱北口岸 · 家庭团圆晚餐',
+        '♨ 早茶 · 中山温泉度假区',
+        '🐟 珠海渔女 · 情侣路海滨',
+        '🏙 沙面 · 站西钟表城 · 广州塔 · 告别晚餐',
+        '🚄 上午出发 · 抵达桂林',
+        '🛶 漓江游船（83公里）· 相公山 · 啤酒鱼',
+        '🚣 遇龙河漂流 · 前往重庆 · 洪崖洞夜景',
+        '🌶 磁器口 · 长江索道 · 火锅 · 重庆夜景',
+        '🚄 重庆上午活动 · 午后出发 · 抵达张家界',
+        '🏔 武陵源 · 百龙天梯 · 袁家界 · 金鞭溪',
+        '🌁 玻璃桥 · 大峡谷 · 天门山栈道',
+        '🚄 清晨散步 · 前往上海 · 夜游外滩',
+        '🌆 上海中心 · 豫园 · 外滩 · 法租界',
+        '🚄 高铁到北京 · 后海 · 北京烤鸭',
+        '🏯 天安门 · 故宫 · 景山 · 南锣鼓巷',
+        '🏔 慕田峪长城 · 天坛',
+        '✈️ 凌晨出发',
+      ],
+      tip: [
+        '首晚安排在九龙本地、少换乘。第2天再完整体验过海、太平山和中环。',
+        '⚠️ 西九龙到深圳福田末班约22:30。到深圳后尽快设置<strong>微信支付 + 支付宝</strong>。',
+        '蛇口码头（地铁2号线）便于次日去澳门。黄金周开始前请尽快订房。',
+        '澳门历史城区半天可走完。10月1日晚可能看到国庆烟花。',
+        '黄金周期间建议提前预约下午温泉场次。',
+        '珠海距中山约40分钟，海滨步道宽阔，整体比深圳湾更从容。',
+        '⚠️ 逛表城注意验货、测试功能并适度议价。',
+        '桂林米粉约€2，性价比很高；黄金周后客流明显回落。',
+        '10月漓江光线和水位都不错，人流也更舒适。',
+        '这样能从容离开阳朔，晚上到重庆依然能看夜景。',
+        '订酒店时请一次确认重庆两晚，避免临时改价。',
+        '这天行程尽量轻松，保证次日张家界体力。',
+        '黄金周后排队明显减少；山上早晚温差大，带保暖层。',
+        '天门山与玻璃桥不在同一景区，门票需要分开购买。',
+        '北京10月中旬天气和能见度都很好，抵达当晚就订故宫。',
+        '慕田峪10月秋色和视野都很理想。今晚为03:00航班做机场转移。',
+      ],
+      fn: '请尽早预订澳门酒店，重庆两晚尽快一次锁定；桂林漓江游船、张家界索道和北京故宫在确定日期后尽快预约。'
+    }
+  };
+
+  function setArray(selector, values, asHTML = false) {
+    const nodes = document.querySelectorAll(selector);
+    nodes.forEach((node, i) => {
+      if (values[i] == null) return;
+      if (asHTML) node.innerHTML = values[i];
+      else node.textContent = values[i];
+    });
+  }
+
+  function applyGoogleLanguage(lang) {
+    const langCode = lang === 'zh' ? 'zh-CN' : lang;
+    const combo = document.querySelector('.goog-te-combo');
+    if (!combo) return;
+    combo.value = langCode;
+    combo.dispatchEvent(new Event('change'));
+  }
+
+  function setLanguage(lang) {
+    const payload = lang === 'en' ? base : translations[lang];
+    if (!payload) return;
+
+    document.documentElement.lang = lang;
+    document.title = payload.title;
+    const eyebrow = document.querySelector('.eyebrow');
+    const heroTitle = document.querySelector('.hero h1');
+    const heroSub = document.querySelector('.hero-sub');
+    const legendHead = document.querySelector('.legend > span');
+    const footer = document.querySelector('.fn');
+    if (eyebrow) eyebrow.textContent = payload.eyebrow;
+    if (heroTitle) heroTitle.innerHTML = payload.heroTitle;
+    if (heroSub) heroSub.textContent = payload.heroSub;
+    if (legendHead) legendHead.textContent = payload.legendHead;
+    if (footer) footer.textContent = payload.fn;
+
+    setArray('.ptitle', payload.ptitle);
+    setArray('.legend .li', payload.legend);
+    setArray('.thead > div', payload.thead);
+    setArray('.panel.gold-bg .nlist li', payload.keyTips, true);
+    setArray('.dloc', payload.dloc, true);
+    setArray('.dh', payload.dh);
+    setArray('.tip', payload.tip, true);
+
+    buttons.forEach((btn) => btn.classList.toggle('active', btn.dataset.lang === lang));
+    localStorage.setItem('tripLang', lang);
+
+    if (lang !== 'en') {
+      // Translate all remaining detailed content blocks not covered by static dictionaries.
+      setTimeout(() => applyGoogleLanguage(lang), 250);
+      setTimeout(() => applyGoogleLanguage(lang), 900);
+    }
+  }
+
+  window.googleTranslateElementInit = function () {
+    if (!window.google || !google.translate || !google.translate.TranslateElement) return;
+    new google.translate.TranslateElement(
+      {
+        pageLanguage: 'en',
+        includedLanguages: 'en,es,zh-CN',
+        autoDisplay: false,
+      },
+      'google_translate_element'
+    );
+
+    const saved = localStorage.getItem('tripLang');
+    if (saved && saved !== 'en') {
+      setTimeout(() => applyGoogleLanguage(saved), 500);
+    }
+  };
+
+  buttons.forEach((btn) => {
+    btn.addEventListener('click', () => setLanguage(btn.dataset.lang));
+  });
+
+  const saved = localStorage.getItem('tripLang');
+  setLanguage(saved && ['en', 'es', 'zh'].includes(saved) ? saved : 'en');
+})();
+</script>
+<script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </body>
 </html>
